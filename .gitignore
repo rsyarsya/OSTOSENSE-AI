@@ -1,0 +1,36 @@
+# Python virtual environments
+ai/.venv/
+.venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local backups and migration scratch files
+.backup/
+.git.empty-*/
+
+# Agent/session local state
+.agents/
+.codex/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+
+# Build/test outputs
+build/
+dist/
+*.egg-info/

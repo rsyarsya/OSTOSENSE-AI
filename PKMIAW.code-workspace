@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "PKMIAW",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/ai/.venv/bin/python"
+  }
+}
