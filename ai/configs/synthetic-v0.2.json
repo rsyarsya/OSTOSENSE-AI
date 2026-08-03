@@ -1,0 +1,144 @@
+{
+    "config_id": "synthetic-v0.2",
+    "data_contract_version": "v1.1",
+    "base_timestamp_ms": 1700000000000,
+    "session_gap_s": 7200,
+    "sampling_rate_hz": 1,
+    "warmup_s": 5,
+    "baseline_window_s": 60,
+    "min_full_window_s": 120,
+    "identity": {
+        "device_id": "synthetic-device-001",
+        "operator_id": "synthetic-operator-001",
+        "firmware_version": "synthetic-fw-0.2.0",
+        "fluid_type": "synthetic-saline-placeholder"
+    },
+    "signal": {
+        "cap_baseline": 12.0,
+        "cap_noise_sigma": 0.05,
+        "cap_gradual_rise": 6.0,
+        "cap_sudden_jump": 4.0,
+        "lig_dry_level": 400.0,
+        "lig_noise_sigma": 1.0,
+        "lig_contact_level": 900.0
+    },
+    "phases": {
+        "gradual_dry_fraction": 0.4,
+        "gradual_contact_fraction": 0.8,
+        "sudden_contact_fraction": 0.85,
+        "leak_flag_delay_s": 3,
+        "leak_confirm_delay_s": 5,
+        "fault_start_fraction": 0.5,
+        "fault_duration_s": 30
+    },
+    "events": {
+        "injection_volume_ml_per_step": 10.0,
+        "target_flow_ml_min": 20.0,
+        "injection_step_s": 30
+    },
+    "scenarios": [
+        {
+            "scenario_id": "safe",
+            "arm": "SAFE",
+            "kind": "safe",
+            "count": 2,
+            "duration_s": 300,
+            "bag_id": "synthetic-bag-safe-a",
+            "sensor_id": "synthetic-sensor-safe-a"
+        },
+        {
+            "scenario_id": "gradual-observed-first",
+            "arm": "LEAK_GRADUAL",
+            "kind": "gradual",
+            "count": 1,
+            "duration_s": 420,
+            "physical_observation_delay_s": 0,
+            "bag_id": "synthetic-bag-leak-a",
+            "sensor_id": "synthetic-sensor-leak-a"
+        },
+        {
+            "scenario_id": "gradual-flag-first",
+            "arm": "LEAK_GRADUAL",
+            "kind": "gradual",
+            "count": 1,
+            "duration_s": 420,
+            "physical_observation_delay_s": 4,
+            "bag_id": "synthetic-bag-leak-a",
+            "sensor_id": "synthetic-sensor-leak-a"
+        },
+        {
+            "scenario_id": "sudden",
+            "arm": "LEAK_SUDDEN",
+            "kind": "sudden",
+            "count": 1,
+            "duration_s": 300,
+            "physical_observation_delay_s": 0,
+            "bag_id": "synthetic-bag-leak-b",
+            "sensor_id": "synthetic-sensor-leak-b"
+        },
+        {
+            "scenario_id": "fault-cap",
+            "arm": "SAFE",
+            "kind": "fault_cap_disconnect",
+            "count": 1,
+            "duration_s": 240,
+            "bag_id": "synthetic-bag-qc-a",
+            "sensor_id": "synthetic-sensor-qc-a"
+        },
+        {
+            "scenario_id": "fault-gap",
+            "arm": "SAFE",
+            "kind": "fault_data_gap",
+            "count": 1,
+            "duration_s": 240,
+            "bag_id": "synthetic-bag-qc-a",
+            "sensor_id": "synthetic-sensor-qc-a"
+        },
+        {
+            "scenario_id": "fault-cal",
+            "arm": "SAFE",
+            "kind": "fault_calibration",
+            "count": 1,
+            "duration_s": 240,
+            "bag_id": "synthetic-bag-qc-b",
+            "sensor_id": "synthetic-sensor-qc-b"
+        },
+        {
+            "scenario_id": "fault-both",
+            "arm": "SAFE",
+            "kind": "fault_both_disconnect",
+            "count": 1,
+            "duration_s": 240,
+            "bag_id": "synthetic-bag-qc-b",
+            "sensor_id": "synthetic-sensor-qc-b"
+        }
+    ],
+    "provenance": {
+        "base_timestamp_ms": "ENGINEERING_TEST_ONLY",
+        "session_gap_s": "ENGINEERING_TEST_ONLY",
+        "sampling_rate_hz": "ENGINEERING_TEST_ONLY",
+        "warmup_s": "ENGINEERING_TEST_ONLY",
+        "baseline_window_s": "CONTRACT_DERIVED",
+        "min_full_window_s": "ENGINEERING_TEST_ONLY",
+        "signal.cap_baseline": "ENGINEERING_TEST_ONLY",
+        "signal.cap_noise_sigma": "ENGINEERING_TEST_ONLY",
+        "signal.cap_gradual_rise": "ENGINEERING_TEST_ONLY",
+        "signal.cap_sudden_jump": "ENGINEERING_TEST_ONLY",
+        "signal.lig_dry_level": "ENGINEERING_TEST_ONLY",
+        "signal.lig_noise_sigma": "ENGINEERING_TEST_ONLY",
+        "signal.lig_contact_level": "ENGINEERING_TEST_ONLY",
+        "phases.gradual_dry_fraction": "ENGINEERING_TEST_ONLY",
+        "phases.gradual_contact_fraction": "PILOT_PENDING",
+        "phases.sudden_contact_fraction": "ENGINEERING_TEST_ONLY",
+        "phases.leak_flag_delay_s": "PILOT_PENDING",
+        "phases.leak_confirm_delay_s": "ENGINEERING_TEST_ONLY",
+        "phases.fault_start_fraction": "ENGINEERING_TEST_ONLY",
+        "phases.fault_duration_s": "ENGINEERING_TEST_ONLY",
+        "events.injection_volume_ml_per_step": "ENGINEERING_TEST_ONLY",
+        "events.target_flow_ml_min": "ENGINEERING_TEST_ONLY",
+        "events.injection_step_s": "ENGINEERING_TEST_ONLY",
+        "scenarios[].count": "ENGINEERING_TEST_ONLY",
+        "scenarios[].duration_s": "ENGINEERING_TEST_ONLY",
+        "scenarios[].physical_observation_delay_s": "ENGINEERING_TEST_ONLY"
+    }
+}

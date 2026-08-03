@@ -5,9 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ostosense-contract"
 version = "0.1.0"
-description = "OSTOSENSE Tier 1 data contract and logger"
+description = "OSTOSENSE Tier 1 data contract and offline AI pipeline tools"
 requires-python = ">=3.10"
 dependencies = []
+
+[project.optional-dependencies]
+pipeline = [
+    "mord==0.7",
+    "numpy==2.2.6",
+    "scikit-learn==1.9.0",
+    "scipy==1.14.1",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

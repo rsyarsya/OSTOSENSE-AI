@@ -1,0 +1,18 @@
+{
+  "config_id": "features-v0.1",
+  "status": "DRAFT working pipeline config",
+  "data_contract_version": "v1.1",
+  "window_seconds": 120,
+  "stride_seconds": 10,
+  "sampling_rate_hz": 1,
+  "jitter_tolerance_ms": 200,
+  "window_interval": "(t-W,t]",
+  "features": [
+    "cap_delta_mean",
+    "cap_delta_last",
+    "cap_delta_slope_per_s",
+    "cap_delta_variance",
+    "cap_delta_range"
+  ],
+  "working_source": "docs/ai-data-collection-protocol-v0.1.md"
+}
