@@ -1,0 +1,11 @@
+{
+  "boundary_config_version": "boundary-ENGINEERING_TEST_ONLY-v0.1",
+  "status": "ENGINEERING_TEST_ONLY",
+  "rulebook_version": "v0.3",
+  "unit": "seconds",
+  "allowed_dataset_origin": "SYNTHETIC_PIPELINE_TEST_ONLY",
+  "b1_s": 30,
+  "b2_s": 90,
+  "b3_s": 180,
+  "warning": "ENGINEERING_TEST_ONLY synthetic pipeline fixture. These bench-scale seconds are arbitrary test values chosen only to exercise the labeling pipeline on synthetic data. They are NOT OSTOSENSE performance, clinical thresholds, or pilot-derived boundaries, and must never be used on real data. Production B1/B2/B3 remain PILOT_PENDING under Label Rulebook v0.3."
+}
