@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ostosense.local/contracts/ai-runtime-output-v0.1.schema.json",
+  "title": "OSTOSENSE AI Runtime Output v0.1",
+  "description": "Kontrak keluaran kelas risiko AI untuk integrasi software. Versi ini hanya mengizinkan keadaan LIVE tanpa model yang disetujui atau prediksi sintetis ENGINEERING_TEST_ONLY.",
+  "type": "object",
+  "required": [
+    "runtime_output_version",
+    "mode",
+    "data_source",
+    "model_status",
+    "prediction_available",
+    "risk_class",
+    "risk_class_index",
+    "model_artifact_version",
+    "evidence_scope",
+    "warning"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "runtime_output_version": {"const": "0.1.0"},
+    "mode": {"enum": ["LIVE", "ENGINEERING_TEST"]},
+    "data_source": {"enum": ["NONE", "SYNTHETIC_FIXTURE"]},
+    "model_status": {"enum": ["UNAVAILABLE", "TEST_ONLY"]},
+    "prediction_available": {"type": "boolean"},
+    "risk_class": {
+      "type": ["string", "null"],
+      "enum": ["Safe", "Monitor", "Caution", "Urgent", null]
+    },
+    "risk_class_index": {
+      "type": ["integer", "null"],
+      "enum": [0, 1, 2, 3, null]
+    },
+    "model_artifact_version": {
+      "type": ["string", "null"],
+      "enum": ["0.1.0", null]
+    },
+    "evidence_scope": {
+      "enum": ["NO_PREDICTION", "PIPELINE_MECHANICS_ONLY"]
+    },
+    "warning": {"type": "string", "minLength": 1}
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "mode": {"const": "LIVE"},
+        "data_source": {"const": "NONE"},
+        "model_status": {"const": "UNAVAILABLE"},
+        "prediction_available": {"const": false},
+        "risk_class": {"const": null},
+        "risk_class_index": {"const": null},
+        "model_artifact_version": {"const": null},
+        "evidence_scope": {"const": "NO_PREDICTION"},
+        "warning": {"const": "No approved real-data model is available; no OSTOSENSE risk class was produced."}
+      }
+    },
+    {
+      "properties": {
+        "mode": {"const": "ENGINEERING_TEST"},
+        "data_source": {"const": "SYNTHETIC_FIXTURE"},
+        "model_status": {"const": "TEST_ONLY"},
+        "prediction_available": {"const": true},
+        "risk_class": {"const": "Safe"},
+        "risk_class_index": {"const": 0},
+        "model_artifact_version": {"const": "0.1.0"},
+        "evidence_scope": {"const": "PIPELINE_MECHANICS_ONLY"},
+        "warning": {"const": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."}
+      }
+    },
+    {
+      "properties": {
+        "mode": {"const": "ENGINEERING_TEST"},
+        "data_source": {"const": "SYNTHETIC_FIXTURE"},
+        "model_status": {"const": "TEST_ONLY"},
+        "prediction_available": {"const": true},
+        "risk_class": {"const": "Monitor"},
+        "risk_class_index": {"const": 1},
+        "model_artifact_version": {"const": "0.1.0"},
+        "evidence_scope": {"const": "PIPELINE_MECHANICS_ONLY"},
+        "warning": {"const": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."}
+      }
+    },
+    {
+      "properties": {
+        "mode": {"const": "ENGINEERING_TEST"},
+        "data_source": {"const": "SYNTHETIC_FIXTURE"},
+        "model_status": {"const": "TEST_ONLY"},
+        "prediction_available": {"const": true},
+        "risk_class": {"const": "Caution"},
+        "risk_class_index": {"const": 2},
+        "model_artifact_version": {"const": "0.1.0"},
+        "evidence_scope": {"const": "PIPELINE_MECHANICS_ONLY"},
+        "warning": {"const": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."}
+      }
+    },
+    {
+      "properties": {
+        "mode": {"const": "ENGINEERING_TEST"},
+        "data_source": {"const": "SYNTHETIC_FIXTURE"},
+        "model_status": {"const": "TEST_ONLY"},
+        "prediction_available": {"const": true},
+        "risk_class": {"const": "Urgent"},
+        "risk_class_index": {"const": 3},
+        "model_artifact_version": {"const": "0.1.0"},
+        "evidence_scope": {"const": "PIPELINE_MECHANICS_ONLY"},
+        "warning": {"const": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."}
+      }
+    }
+  ]
+}

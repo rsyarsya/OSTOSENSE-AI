@@ -1,0 +1,12 @@
+{
+  "runtime_output_version": "0.1.0",
+  "mode": "ENGINEERING_TEST",
+  "data_source": "SYNTHETIC_FIXTURE",
+  "model_status": "TEST_ONLY",
+  "prediction_available": true,
+  "risk_class": "Monitor",
+  "risk_class_index": 1,
+  "model_artifact_version": "0.1.0",
+  "evidence_scope": "PIPELINE_MECHANICS_ONLY",
+  "warning": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."
+}
