@@ -59,6 +59,10 @@ for name in data_contract ordinal_inference capacitive_features; do
 done
 
 echo "[6/6] Repository hygiene"
+if (cd "$ROOT_DIR" && git grep -nI -E '[[:blank:]]+$' -- .); then
+  echo "Trailing whitespace ditemukan pada berkas terlacak" >&2
+  exit 1
+fi
 (cd "$ROOT_DIR" && git diff --check)
 (cd "$ROOT_DIR" && git diff --cached --check)
 (cd "$ROOT_DIR" && bash -n scripts/*.sh)

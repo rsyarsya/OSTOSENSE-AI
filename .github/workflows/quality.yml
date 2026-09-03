@@ -70,6 +70,10 @@ jobs:
       - name: Check whitespace and prohibited tracked files
         run: |
           set -euo pipefail
+          if git grep -nI -E '[[:blank:]]+$' -- .; then
+            echo "Trailing whitespace ditemukan pada berkas terlacak" >&2
+            exit 1
+          fi
           git diff --check
           git show --check --format= --no-renames HEAD
           if git ls-files | grep -Eq '(^|/)(\.env($|\.)|.*\.(pem|key|p12|pfx)$)'; then

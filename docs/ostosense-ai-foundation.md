@@ -1,8 +1,11 @@
 # Fondasi Arsitektur AI OSTOSENSE
 
-**Status:** Panduan konseptual prototipe PKM-KC  
-**Acuan data:** OSTOSENSE AI Data Contract v1.1  
-**Fokus:** Feasibility, interpretabilitas, dan integrasi end-to-end  
+**Status:** Panduan konseptual prototipe PKM-KC
+
+**Acuan data:** OSTOSENSE AI Data Contract v1.1
+
+**Fokus:** Feasibility, interpretabilitas, dan integrasi end-to-end
+
 **Bukan:** Spesifikasi perangkat medis siap produksi atau validasi klinis
 
 ## 1. Ringkasan Eksekutif

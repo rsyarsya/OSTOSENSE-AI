@@ -2,16 +2,19 @@
 
 Dokumentasi fondasi AI disusun dalam dua lapisan:
 
-1. [Fondasi Arsitektur AI OSTOSENSE](./ostosense-ai-foundation.md)  
+1. [Fondasi Arsitektur AI OSTOSENSE](./ostosense-ai-foundation.md)
+
    Penjelasan konseptual sistem, model, user flow, runtime, eksperimen,
    evaluasi, edge-cloud split, dan roadmap MVP.
 
-2. [OSTOSENSE AI Data Contract v1.1](./ai-data-contract-v1.1.md)  
+2. [OSTOSENSE AI Data Contract v1.1](./ai-data-contract-v1.1.md)
+
    Definisi teknis tabel, field, enum quality, calibration events, timestamp,
    dan invariant dataset.
 
 3. [OSTOSENSE AI Label Rulebook v0.3](./ai-label-rulebook-v0.3.md) —
-   **BERLAKU. STRUCTURE LOCKED — NUMERIC BOUNDARIES PILOT_PENDING.**  
+   **BERLAKU. STRUCTURE LOCKED — NUMERIC BOUNDARIES PILOT_PENDING.**
+
    Aturan penurunan label ordinal `Safe`/`Monitor`/`Caution`/`Urgent` dari
    data eksperimen: konvensi window `(t - W, t]`, enam input pelabelan,
    larangan derivasi label dan fitur, aturan partisi dataset, dan aturan
@@ -21,13 +24,15 @@ Dokumentasi fondasi AI disusun dalam dua lapisan:
    dipertahankan sebagai bukti historis.
 
 4. [Protokol Pengambilan Data Terintegrasi v0.1](./ai-data-collection-protocol-v0.1.md) —
-   **DRAFT, belum dikunci.**  
+   **DRAFT, belum dikunci.**
+
    Panduan praktis pengambilan data terintegrasi kapasitif + LIG: rig uji,
    alur sesi, definisi window, fase dry/baseline, protocol manifest,
    skenario eksperimen, ground truth, matriks pilot, dan QC.
 
 5. [Runbook Shakedown Intake v0.1](./ai-shakedown-runbook-v0.1.md) —
-   **DRAFT, belum dikunci.**  
+   **DRAFT, belum dikunci.**
+
    Panduan operasional untuk 3–5 sesi shakedown rekayasa dua-kanal pertama:
    penyiapan protocol manifest, ID stabil, logger tersinkron, baseline/dry,
    event operator, ground truth, penyalinan mentah immutable, perintah
