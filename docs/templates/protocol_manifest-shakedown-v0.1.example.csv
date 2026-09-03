@@ -1,0 +1,5 @@
+session_id,protocol_version,planned_arm,planned_safe_horizon_s,target_fill_or_volume,injection_profile,injection_method,planned_flow_ml_min,physical_leak_observation_method,operator_id,bag_id,sensor_id,device_id
+EXAMPLE_ONLY-safe-001,v0.1-shakedown-EXAMPLE,SAFE,180,EXAMPLE_ONLY-target-fill,,,,,EXAMPLE_ONLY-operator,EXAMPLE_ONLY-bag-safe,EXAMPLE_ONLY-sensor-safe,EXAMPLE_ONLY-device
+EXAMPLE_ONLY-gradual-leak-001,v0.1-shakedown-EXAMPLE,LEAK_GRADUAL,,EXAMPLE_ONLY-target-volume,stepwise,manual_syringe,20,EXAMPLE_ONLY-visual-plus-indicator-plus-video,EXAMPLE_ONLY-operator,EXAMPLE_ONLY-bag-leak,EXAMPLE_ONLY-sensor-leak,EXAMPLE_ONLY-device
+EXAMPLE_ONLY-nonleaking-fill-001,v0.1-shakedown-EXAMPLE,LEAK_GRADUAL,600,EXAMPLE_ONLY-target-volume,continuous,pump,10,EXAMPLE_ONLY-visual-plus-indicator-plus-video,EXAMPLE_ONLY-operator,EXAMPLE_ONLY-bag-fill,EXAMPLE_ONLY-sensor-fill,EXAMPLE_ONLY-device
+EXAMPLE_ONLY-sudden-leak-001,v0.1-shakedown-EXAMPLE,LEAK_SUDDEN,,EXAMPLE_ONLY-target-volume,,,,EXAMPLE_ONLY-visual-plus-indicator-plus-video,EXAMPLE_ONLY-operator,EXAMPLE_ONLY-bag-sudden,EXAMPLE_ONLY-sensor-sudden,EXAMPLE_ONLY-device

@@ -1,0 +1,19 @@
+{
+  "config_id": "raw-qc-v0.1",
+  "status": "PROPOSED_PILOT_SETTING",
+  "contract_version": "v1.1",
+  "protocol_version": "v0.1",
+  "expected_interval_ms": 1000,
+  "jitter_tolerance_ms": 200,
+  "unmarked_gap_threshold_ms": 2000,
+  "minimum_pre_injection_dry_s": 120,
+  "baseline_window_s": 60,
+  "provenance": {
+    "expected_interval_ms": "DRAFT_PROTOCOL_V0.1",
+    "jitter_tolerance_ms": "DRAFT_PROTOCOL_V0.1",
+    "unmarked_gap_threshold_ms": "DRAFT_PROTOCOL_V0.1",
+    "minimum_pre_injection_dry_s": "DRAFT_PROTOCOL_V0.1",
+    "baseline_window_s": "DRAFT_PROTOCOL_V0.1"
+  },
+  "warning": "PROVISIONAL engineering QC settings for real-data intake mechanics only. These are DRAFT Data Collection Protocol v0.1 working values, NOT clinical thresholds, NOT validated OSTOSENSE performance criteria, and NOT label boundaries. Production B1/B2/B3 remain PILOT_PENDING."
+}
