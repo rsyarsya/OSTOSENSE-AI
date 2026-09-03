@@ -1,0 +1,86 @@
+name: Quality
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    defaults:
+      run:
+        working-directory: ai
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: ai/pyproject.toml
+      - name: Install pipeline and quality tools
+        run: python -m pip install -e ".[pipeline,quality]"
+      - name: Unit and integration tests
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONPATH: src
+        run: python -W error -m unittest discover -s tests
+      - name: Ruff correctness gate
+        run: python -m ruff check src tests
+      - name: Pyright
+        run: python -m pyright --pythonpath "$(command -v python)"
+      - name: Build package
+        run: python -m build --outdir "${{ runner.temp }}/dist"
+      - name: Clean-wheel import smoke test
+        if: matrix.python-version == '3.12'
+        working-directory: ${{ runner.temp }}
+        run: |
+          python -m venv smoke-venv
+          smoke-venv/bin/python -m pip install --no-deps dist/*.whl
+          smoke-venv/bin/python -c "import ostosense_ai, ostosense_contract"
+
+  cpp:
+    name: Portable C++17
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Compile and run host tests
+        run: |
+          set -euo pipefail
+          for name in data_contract ordinal_inference capacitive_features; do
+            g++ -std=c++17 -Wall -Wextra -Werror -pedantic \
+              -I firmware/include \
+              "firmware/tests/${name}_test.cpp" \
+              -o "${RUNNER_TEMP}/${name}_test"
+            "${RUNNER_TEMP}/${name}_test"
+          done
+
+  hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check whitespace and prohibited tracked files
+        run: |
+          set -euo pipefail
+          git diff --check
+          git show --check --format= --no-renames HEAD
+          if git ls-files | grep -Eq '(^|/)(\.env($|\.)|.*\.(pem|key|p12|pfx)$)'; then
+            echo "Tracked secret-like filename ditemukan" >&2
+            exit 1
+          fi
+          if git ls-files | grep -Eq '(^|/)P00[1-7](_[0-9]+)?\.csv$'; then
+            echo "Raw P001-P007 CSV tidak boleh berada di repository publik" >&2
+            exit 1
+          fi
+          if git ls-files | grep -Eq '(^|/)(ordinal_model_params|golden_vectors|reconstructed_windows)\.hpp$'; then
+            echo "Generated model/golden header tidak boleh berada di repository" >&2
+            exit 1
+          fi

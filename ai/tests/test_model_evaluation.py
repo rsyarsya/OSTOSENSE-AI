@@ -229,9 +229,12 @@ class ModelEvaluationValidationTests(unittest.TestCase):
                 _edit_json(m / "matrix_manifest.json", mutate)
                 # matrix_manifest hash changed -> model must be re-tied; keep it consistent for
                 # dataset_origin/version tests by re-pointing the training input hash.
-                _edit_json(d / "training_manifest.json",
-                           lambda x: x["input_sha256"].__setitem__(
-                               "matrix_manifest_json", _sha(m / "matrix_manifest.json")))
+                _edit_json(
+                    d / "training_manifest.json",
+                    lambda x, matrix_dir=m: x["input_sha256"].__setitem__(
+                        "matrix_manifest_json", _sha(matrix_dir / "matrix_manifest.json")
+                    ),
+                )
                 with self.assertRaises(ModelEvaluationError):
                     evaluate_validation_partition(m, d, root / "out")
 
@@ -244,9 +247,12 @@ class ModelEvaluationValidationTests(unittest.TestCase):
                 root = Path(name)
                 m, d = self._setup(root)
                 _edit_json(d / "training_manifest.json", mutate)
-                _edit_json(d / "training_manifest.json",
-                           lambda x: x["output_sha256"].__setitem__(
-                               "ordinal_model_json", _sha(d / "ordinal_model.json")))
+                _edit_json(
+                    d / "training_manifest.json",
+                    lambda x, model_dir=d: x["output_sha256"].__setitem__(
+                        "ordinal_model_json", _sha(model_dir / "ordinal_model.json")
+                    ),
+                )
                 with self.assertRaises(ModelEvaluationError):
                     evaluate_validation_partition(m, d, root / "out")
 

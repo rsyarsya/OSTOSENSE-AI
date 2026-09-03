@@ -356,9 +356,11 @@ class MatrixValidationTests(unittest.TestCase):
                     if filename == "features.csv":
                         _edit_json(
                             lbl / "label_manifest.json",
-                            lambda data: data["feature_artifact_sha256"].__setitem__(
+                            lambda data, feature_dir=feat: data[
+                                "feature_artifact_sha256"
+                            ].__setitem__(
                                 "features_csv_sha256",
-                                matrix._sha256_file(feat / "features.csv"),
+                                matrix._sha256_file(feature_dir / "features.csv"),
                             ),
                         )
                     with self.assertRaises(MatrixError):
@@ -446,9 +448,11 @@ class MatrixValidationTests(unittest.TestCase):
                     )
                     _edit_json(
                         lbl / "label_manifest.json",
-                        lambda data: data["feature_artifact_sha256"].__setitem__(
+                        lambda data, feature_dir=feat: data[
+                            "feature_artifact_sha256"
+                        ].__setitem__(
                             "features_csv_sha256",
-                            matrix._sha256_file(feat / "features.csv"),
+                            matrix._sha256_file(feature_dir / "features.csv"),
                         ),
                     )
                     with self.assertRaises(MatrixError):

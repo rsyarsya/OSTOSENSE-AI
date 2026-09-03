@@ -1,0 +1,158 @@
+{
+  "inventory_version": "0.1.0",
+  "dataset_origin": "REAL_PILOT_UNLABELED",
+  "raw_data_publication": "NOT_INCLUDED_IN_PUBLIC_REPOSITORY",
+  "label_status": "UNLABELED",
+  "runtime_experimental_channel": "Kap_7",
+  "source_rate_hz": 10,
+  "derived_rate_hz": 1,
+  "window_seconds": 120,
+  "stride_seconds": 10,
+  "sessions": [
+    {
+      "session_id": "P001",
+      "file_name": "P001.csv",
+      "scenario": "kering_diam",
+      "position": "tidak_dicatat",
+      "raw_row_count": 2985,
+      "complete_1hz_bin_count": 298,
+      "partial_final_raw_sample_count": 5,
+      "unlabeled_window_count": 18,
+      "descriptive_analysis_included": true,
+      "sha256": "63e4e35cb6396387aa0910bb11517913b30e226292be67c5c393cb69ec163b84"
+    },
+    {
+      "session_id": "P002",
+      "file_name": "P002.csv",
+      "scenario": "kering_dengan_gerakan",
+      "position": "bervariasi",
+      "raw_row_count": 2717,
+      "complete_1hz_bin_count": 271,
+      "partial_final_raw_sample_count": 7,
+      "unlabeled_window_count": 16,
+      "descriptive_analysis_included": true,
+      "sha256": "d1bb2286f7202a6d77cb8eb32da7ea2baf2f5944e1c3ad2c451e551a4f14ac2a"
+    },
+    {
+      "session_id": "P003",
+      "file_name": "P003.csv",
+      "scenario": "pengisian_kantong_bertahap",
+      "position": "tidak_dicatat",
+      "raw_row_count": 3312,
+      "complete_1hz_bin_count": 331,
+      "partial_final_raw_sample_count": 2,
+      "unlabeled_window_count": 22,
+      "descriptive_analysis_included": true,
+      "sha256": "e7b304e9ff6b7cb10b5b9bcb5d80b31305654ae4d27395c95e46c812bb083e59"
+    },
+    {
+      "session_id": "P004-1",
+      "file_name": "P004.csv",
+      "scenario": "kebocoran_bertahap",
+      "position": "tidak_dicatat",
+      "raw_row_count": 1537,
+      "complete_1hz_bin_count": 153,
+      "partial_final_raw_sample_count": 7,
+      "unlabeled_window_count": 4,
+      "descriptive_analysis_included": true,
+      "sha256": "91d015e465cc18cfe7943b74aea438b213ac7985a37f1efa7d5469cb05d9569a"
+    },
+    {
+      "session_id": "P004-2",
+      "file_name": "P004_2.csv",
+      "scenario": "kebocoran_bertahap",
+      "position": "tidak_dicatat",
+      "raw_row_count": 1267,
+      "complete_1hz_bin_count": 126,
+      "partial_final_raw_sample_count": 7,
+      "unlabeled_window_count": 1,
+      "descriptive_analysis_included": true,
+      "sha256": "f2eb343bfff545c77a0677b317fc9f1b838c3da4119d1dd14cb499ed91e0e5bf"
+    },
+    {
+      "session_id": "P004-3",
+      "file_name": "P004_3.csv",
+      "scenario": "kebocoran_bertahap",
+      "position": "berbaring",
+      "raw_row_count": 1527,
+      "complete_1hz_bin_count": 152,
+      "partial_final_raw_sample_count": 7,
+      "unlabeled_window_count": 4,
+      "descriptive_analysis_included": true,
+      "sha256": "27c76f4c249e93ce3586a4b1fed68ee214914c89fc164ee15bf9ace431c9ef76"
+    },
+    {
+      "session_id": "P005-1",
+      "file_name": "P005.csv",
+      "scenario": "kebocoran_mendadak",
+      "position": "tidak_dicatat",
+      "raw_row_count": 1831,
+      "complete_1hz_bin_count": 183,
+      "partial_final_raw_sample_count": 1,
+      "unlabeled_window_count": 7,
+      "descriptive_analysis_included": true,
+      "sha256": "2d028b620cabc14a9c8fc19420309b54d3f75e6b0aa15fbbdd8c1adae2947b2c"
+    },
+    {
+      "session_id": "P005-2",
+      "file_name": "P005_2.csv",
+      "scenario": "kebocoran_mendadak",
+      "position": "duduk",
+      "raw_row_count": 1510,
+      "complete_1hz_bin_count": 151,
+      "partial_final_raw_sample_count": 0,
+      "unlabeled_window_count": 4,
+      "descriptive_analysis_included": true,
+      "sha256": "2ebb3e7bfbe6409a9b29a988b6040dcbabd4e16b2803605e7129787647791e2e"
+    },
+    {
+      "session_id": "P005-3",
+      "file_name": "P005_3.csv",
+      "scenario": "kebocoran_mendadak",
+      "position": "berbaring",
+      "raw_row_count": 1675,
+      "complete_1hz_bin_count": 167,
+      "partial_final_raw_sample_count": 5,
+      "unlabeled_window_count": 5,
+      "descriptive_analysis_included": true,
+      "sha256": "48866ab45a97351e0890e6cda2d8ba951a735ee107ab884b89c9ded463f41a13"
+    },
+    {
+      "session_id": "P006",
+      "file_name": "P006.csv",
+      "scenario": "uji_gangguan_sensor",
+      "position": "tidak_dicatat",
+      "raw_row_count": 1126,
+      "complete_1hz_bin_count": 112,
+      "partial_final_raw_sample_count": 6,
+      "unlabeled_window_count": 0,
+      "descriptive_analysis_included": false,
+      "sha256": "35c2e98afc4323a0a73061cdc1b8cc4fa1c37b3c7cfd863d6427a06843601411"
+    },
+    {
+      "session_id": "P007",
+      "file_name": "P007.csv",
+      "scenario": "kantong_diisi_sampai_penuh",
+      "position": "tidak_dicatat",
+      "raw_row_count": 2400,
+      "complete_1hz_bin_count": 240,
+      "partial_final_raw_sample_count": 0,
+      "unlabeled_window_count": 13,
+      "descriptive_analysis_included": true,
+      "sha256": "668bdb581f4486969747971e75292edec469c301bfe61f20d9aaa508e14559cd"
+    }
+  ],
+  "totals": {
+    "session_count": 11,
+    "raw_row_count": 21887,
+    "complete_1hz_bin_count": 2184,
+    "partial_final_raw_sample_count": 47,
+    "unlabeled_window_count": 94
+  },
+  "limitations": [
+    "No verified per-window risk labels are available.",
+    "No auditable event timestamps are available for four-class labeling.",
+    "The first 20-second baseline is provisional and was not verified dry.",
+    "This inventory cannot support classifier performance or clinical claims."
+  ]
+}

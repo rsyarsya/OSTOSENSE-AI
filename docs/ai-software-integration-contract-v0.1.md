@@ -1,5 +1,8 @@
 # Kontrak Integrasi Keluaran AI OSTOSENSE v0.1
 
+> Versi ini dipertahankan untuk kompatibilitas. Integrasi baru menggunakan
+> [v0.2](./ai-software-integration-contract-v0.2.md).
+
 Dokumen ini menjelaskan data minimum yang boleh dikirim oleh komponen AI ke
 backend, aplikasi, atau web. Kontrak mesin yang menjadi acuan tersedia di
 `ai/contracts/ai-runtime-output-v0.1.schema.json`.

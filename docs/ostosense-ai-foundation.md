@@ -178,6 +178,13 @@ scale   = max(abs(C_baseline), k * baseline_std, instrument_epsilon)
 delta_C = (C_filtered - C_baseline) / scale
 ```
 
+**Catatan status implementasi (3 September 2026):** rumus berskala di atas
+adalah rancangan fondasi, tetapi pipeline fitur/model artifact v0.1 yang sudah
+diuji saat ini memakai `delta_C = C_raw - C_baseline` tanpa pembagian `scale`.
+Kontrak integrasi v0.2 mengikuti implementasi tersebut agar tidak mencampur dua
+skala. Sebelum pelatihan model nyata, tim harus mengunci salah satu rumus,
+memberi versi baru bila berubah, lalu melatih dan mengevaluasi ulang model.
+
 ### 7.2 Feature set MVP
 
 | Fitur | Intuisi |
@@ -548,4 +555,3 @@ sensor, tetapi harus selesai sebelum klaim final atau deployment model.
 > mengubah pola perubahan kapasitansi menjadi peringatan risiko bertingkat,
 > sementara sensor LIG menyediakan alarm kebocoran aktual yang independen dari
 > model dan tetap berfungsi tanpa koneksi internet.
-

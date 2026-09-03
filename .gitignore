@@ -50,3 +50,7 @@ data/interim/
 data/processed/
 artifacts/
 outputs/
+
+# Private real-pilot CSVs (inventory and hashes may be public, raw rows may not)
+**/P00[1-7].csv
+**/P00[1-7]_[0-9]*.csv

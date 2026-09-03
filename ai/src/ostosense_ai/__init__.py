@@ -22,10 +22,10 @@ evaluator (`model_evaluation`, which scores the validation partition with
 (`edge_export`) that emits float32 C++ headers (model params + golden vectors)
 for host-side portable C++17 inference parity against
 `firmware/include/ostosense/ordinal_inference.hpp`. A dependency-free
-`runtime_output` module exposes the canonical software-facing state: either
-LIVE with no approved model and no class, or an explicitly synthetic
-ENGINEERING_TEST_ONLY class. It emits no probabilities, countdown, LIG state,
-bag-fill value, notification, or clinical action. The `synthetic`,
+`runtime_output` module exposes versioned software-facing states: v0.1 remains
+immutable, while v0.2 adds an explicitly `UNVALIDATED` class from real `Kap_7`
+features for engineering integration. It emits no probabilities, countdown,
+LIG state, bag-fill value, notification, or clinical action. The `synthetic`,
 `evaluation-metric`, `training`, and `model_evaluation` (metric step) paths rely
 on the optional `[pipeline]` dependencies; `features`, `labeling`, `matrix`,
 `training`, `inference`, `edge_export`, `runtime_output`, and this package import
@@ -66,7 +66,9 @@ CSVs into 1 Hz summaries, provisional-baseline normalized features, unlabeled
 that real unlabeled descriptive evidence with a separately identified
 `SYNTHETIC_PIPELINE_TEST_ONLY` optimizer trace in deterministic 300-dpi progress
 figures. Not implemented yet: training/evaluation on labeled real sealed data
-and ESP32 hardware/sensor integration.
+and an on-device ESP32 feature/inference/transmission loop. P001-P007 are real
+five-channel logger data, but remain unlabeled and cannot support classifier
+performance claims.
 The design future batches follow is documented
 in docs/ostosense-ai-foundation.md and the structure-locked
 `docs/ai-label-rulebook-v0.3.md`; the dependency-free Tier 1 contract lives in

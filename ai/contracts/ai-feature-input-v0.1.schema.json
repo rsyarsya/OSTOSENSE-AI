@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ostosense.local/contracts/ai-feature-input-v0.1.schema.json",
+  "title": "OSTOSENSE AI Feature Input v0.1",
+  "description": "One canonical five-feature window accepted by the v0.2 reference runtime emitter.",
+  "type": "object",
+  "required": [
+    "feature_input_version",
+    "data_source",
+    "model_input_channel",
+    "source_window_end_ms",
+    "feature_basis",
+    "feature_order",
+    "features"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "feature_input_version": {"const": "0.1.0"},
+    "data_source": {"enum": ["SYNTHETIC_FIXTURE", "REAL_SENSOR"]},
+    "model_input_channel": {"enum": ["SYNTHETIC_CAPACITIVE", "Kap_7"]},
+    "source_window_end_ms": {"type": "integer", "minimum": 0},
+    "feature_basis": {"const": "RAW_MINUS_SESSION_BASELINE"},
+    "feature_order": {
+      "const": [
+        "cap_delta_mean",
+        "cap_delta_last",
+        "cap_delta_slope_per_s",
+        "cap_delta_variance",
+        "cap_delta_range"
+      ]
+    },
+    "features": {
+      "type": "array",
+      "prefixItems": [
+        {"type": "number"},
+        {"type": "number"},
+        {"type": "number"},
+        {"type": "number"},
+        {"type": "number"}
+      ],
+      "minItems": 5,
+      "maxItems": 5
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "data_source": {"const": "SYNTHETIC_FIXTURE"},
+        "model_input_channel": {"const": "SYNTHETIC_CAPACITIVE"}
+      }
+    },
+    {
+      "properties": {
+        "data_source": {"const": "REAL_SENSOR"},
+        "model_input_channel": {"const": "Kap_7"}
+      }
+    }
+  ]
+}

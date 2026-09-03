@@ -4,7 +4,6 @@ import math
 import unittest
 from unittest import mock
 
-from ostosense_ai import evaluation
 from ostosense_ai.evaluation import CLASS_NAMES, evaluate_predictions
 
 SKLEARN_AVAILABLE = importlib.util.find_spec("sklearn") is not None

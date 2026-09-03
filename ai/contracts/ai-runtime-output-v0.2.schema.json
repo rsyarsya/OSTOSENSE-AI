@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ostosense.local/contracts/ai-runtime-output-v0.2.schema.json",
+  "title": "OSTOSENSE AI Runtime Output v0.2",
+  "description": "Versioned AI class output for unavailable, synthetic engineering-test, and explicitly unvalidated real-sensor integration states.",
+  "type": "object",
+  "required": [
+    "runtime_output_version",
+    "mode",
+    "data_source",
+    "model_status",
+    "prediction_available",
+    "risk_class",
+    "risk_class_index",
+    "source_window_end_ms",
+    "model_input_channel",
+    "model_artifact_version",
+    "model_artifact_sha256",
+    "evidence_scope",
+    "warning"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "runtime_output_version": {"const": "0.2.0"},
+    "mode": {"enum": ["LIVE", "ENGINEERING_TEST", "LIVE_EXPERIMENTAL"]},
+    "data_source": {"enum": ["NONE", "SYNTHETIC_FIXTURE", "REAL_SENSOR"]},
+    "model_status": {"enum": ["UNAVAILABLE", "TEST_ONLY", "UNVALIDATED"]},
+    "prediction_available": {"type": "boolean"},
+    "risk_class": {
+      "type": ["string", "null"],
+      "enum": ["Safe", "Monitor", "Caution", "Urgent", null]
+    },
+    "risk_class_index": {
+      "type": ["integer", "null"],
+      "enum": [0, 1, 2, 3, null]
+    },
+    "source_window_end_ms": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "model_input_channel": {
+      "type": ["string", "null"],
+      "enum": ["SYNTHETIC_CAPACITIVE", "Kap_7", null]
+    },
+    "model_artifact_version": {
+      "type": ["string", "null"],
+      "enum": ["0.1.0", null]
+    },
+    "model_artifact_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "evidence_scope": {
+      "enum": [
+        "NO_PREDICTION",
+        "PIPELINE_MECHANICS_ONLY",
+        "EXPERIMENTAL_UNVALIDATED"
+      ]
+    },
+    "warning": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "mode": {"const": "LIVE"},
+            "data_source": {"const": "NONE"},
+            "model_status": {"const": "UNAVAILABLE"},
+            "prediction_available": {"const": false},
+            "risk_class": {"const": null},
+            "risk_class_index": {"const": null},
+            "source_window_end_ms": {"const": null},
+            "model_input_channel": {"const": null},
+            "model_artifact_version": {"const": null},
+            "model_artifact_sha256": {"const": null},
+            "evidence_scope": {"const": "NO_PREDICTION"},
+            "warning": {"const": "No usable AI prediction is available; no OSTOSENSE risk class was produced."}
+          }
+        },
+        {
+          "properties": {
+            "mode": {"const": "ENGINEERING_TEST"},
+            "data_source": {"const": "SYNTHETIC_FIXTURE"},
+            "model_status": {"const": "TEST_ONLY"},
+            "prediction_available": {"const": true},
+            "source_window_end_ms": {"type": "integer", "minimum": 0},
+            "model_input_channel": {"const": "SYNTHETIC_CAPACITIVE"},
+            "model_artifact_version": {"const": "0.1.0"},
+            "model_artifact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "evidence_scope": {"const": "PIPELINE_MECHANICS_ONLY"},
+            "warning": {"const": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."}
+          }
+        },
+        {
+          "properties": {
+            "mode": {"const": "LIVE_EXPERIMENTAL"},
+            "data_source": {"const": "REAL_SENSOR"},
+            "model_status": {"const": "UNVALIDATED"},
+            "prediction_available": {"const": true},
+            "source_window_end_ms": {"type": "integer", "minimum": 0},
+            "model_input_channel": {"const": "Kap_7"},
+            "model_artifact_version": {"const": "0.1.0"},
+            "model_artifact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "evidence_scope": {"const": "EXPERIMENTAL_UNVALIDATED"},
+            "warning": {"const": "UNVALIDATED experimental class from a synthetic-trained model applied to real Kap_7 sensor features; not for patient notification or clinical action."}
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {"prediction_available": {"const": true}}
+      },
+      "then": {
+        "oneOf": [
+          {"properties": {"risk_class": {"const": "Safe"}, "risk_class_index": {"const": 0}}},
+          {"properties": {"risk_class": {"const": "Monitor"}, "risk_class_index": {"const": 1}}},
+          {"properties": {"risk_class": {"const": "Caution"}, "risk_class_index": {"const": 2}}},
+          {"properties": {"risk_class": {"const": "Urgent"}, "risk_class_index": {"const": 3}}}
+        ]
+      }
+    }
+  ]
+}

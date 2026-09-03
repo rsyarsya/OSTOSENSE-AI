@@ -9,7 +9,8 @@ Scope guardrails (Batch 3A):
 
 - The only AI signal here is the capacitive channel. LIG, events, arm, scenario
   metadata, ground-truth timing, and any future information must never become a
-  model feature. The five baseline-normalized capacitive features live in the
+  model feature. The five baseline-adjusted (raw minus session baseline)
+  capacitive features live in the
   fixed ``FEATURE_COLUMNS`` tuple; identifiers/timestamps in ``features.csv`` are
   audit metadata kept structurally separate from ``FEATURE_COLUMNS``.
 - No Safe/Monitor/Caution/Urgent labels, no model, and no B1/B2/B3 boundaries

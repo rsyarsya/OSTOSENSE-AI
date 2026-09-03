@@ -1,0 +1,15 @@
+{
+  "feature_input_version": "0.1.0",
+  "data_source": "REAL_SENSOR",
+  "model_input_channel": "Kap_7",
+  "source_window_end_ms": 120000,
+  "feature_basis": "RAW_MINUS_SESSION_BASELINE",
+  "feature_order": [
+    "cap_delta_mean",
+    "cap_delta_last",
+    "cap_delta_slope_per_s",
+    "cap_delta_variance",
+    "cap_delta_range"
+  ],
+  "features": [0.0, 0.0, 0.0, 0.0, 0.0]
+}

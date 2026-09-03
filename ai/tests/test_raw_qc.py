@@ -172,35 +172,44 @@ class ConfigTests(unittest.TestCase):
         raw_qc.validate_qc_config(self._base())
 
     def test_rejects_missing_unknown_and_bad_values(self):
-        bad = self._base(); del bad["baseline_window_s"]
+        bad = self._base()
+        del bad["baseline_window_s"]
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
-        bad = self._base(); bad["extra"] = 1
+        bad = self._base()
+        bad["extra"] = 1
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
-        bad = self._base(); bad["expected_interval_ms"] = 0
+        bad = self._base()
+        bad["expected_interval_ms"] = 0
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
-        bad = self._base(); bad["expected_interval_ms"] = "1000"
+        bad = self._base()
+        bad["expected_interval_ms"] = "1000"
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
-        bad = self._base(); bad["protocol_version"] = "v9"
+        bad = self._base()
+        bad["protocol_version"] = "v9"
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
 
     def test_rejects_inconsistent_timing(self):
-        bad = self._base(); bad["jitter_tolerance_ms"] = 1000  # >= expected_interval
+        bad = self._base()
+        bad["jitter_tolerance_ms"] = 1000  # >= expected_interval
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
-        bad = self._base(); bad["unmarked_gap_threshold_ms"] = 1100  # <= 1000+200
+        bad = self._base()
+        bad["unmarked_gap_threshold_ms"] = 1100  # <= 1000+200
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
-        bad = self._base(); bad["minimum_pre_injection_dry_s"] = 30  # < baseline_window_s
+        bad = self._base()
+        bad["minimum_pre_injection_dry_s"] = 30  # < baseline_window_s
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
 
     def test_rejects_bad_provenance(self):
-        bad = self._base(); bad["provenance"] = {"expected_interval_ms": "SOMETHING"}
+        bad = self._base()
+        bad["provenance"] = {"expected_interval_ms": "SOMETHING"}
         with self.assertRaises(raw_qc.RawQcError):
             raw_qc.validate_qc_config(bad)
 
@@ -257,7 +266,8 @@ class FatalInputTests(RawQcBase):
             self.assertFalse((Path(out) / name).exists())
 
     def test_wrong_header_fails_before_output(self):
-        inp = self.root / "in"; inp.mkdir()
+        inp = self.root / "in"
+        inp.mkdir()
         _write_csv(inp / "sessions.csv", ("wrong", "header"), [])
         _write_csv(inp / "samples.csv", SampleRecord.FIELDS, [])
         _write_csv(inp / "events.csv", EventRecord.FIELDS, [])
@@ -277,7 +287,8 @@ class FatalInputTests(RawQcBase):
         self._assert_no_output(out)
 
     def test_missing_mandatory_file(self):
-        inp = self.root / "in"; inp.mkdir()
+        inp = self.root / "in"
+        inp.mkdir()
         _write_csv(inp / "sessions.csv", SessionRecord.FIELDS, [session_row("s1")])
         _write_csv(inp / "samples.csv", SampleRecord.FIELDS, [])
         with self.assertRaises(raw_qc.RawQcError):
@@ -902,7 +913,8 @@ class OutputSafetyTests(RawQcBase):
         inp, man = self._clean_input("ov")
         out = self.root / "out"
         raw_qc.run_raw_qc(inp, CONFIG_PATH, out, protocol_manifest=man)
-        keep = out / "keep.txt"; keep.write_text("k", encoding="utf-8")
+        keep = out / "keep.txt"
+        keep.write_text("k", encoding="utf-8")
         with self.assertRaises(FileExistsError):
             raw_qc.run_raw_qc(inp, CONFIG_PATH, out, protocol_manifest=man)
         raw_qc.run_raw_qc(inp, CONFIG_PATH, out, protocol_manifest=man, overwrite=True)

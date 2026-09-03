@@ -1,0 +1,15 @@
+{
+  "runtime_output_version": "0.2.0",
+  "mode": "LIVE_EXPERIMENTAL",
+  "data_source": "REAL_SENSOR",
+  "model_status": "UNVALIDATED",
+  "prediction_available": true,
+  "risk_class": "Safe",
+  "risk_class_index": 0,
+  "source_window_end_ms": 120000,
+  "model_input_channel": "Kap_7",
+  "model_artifact_version": "0.1.0",
+  "model_artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "evidence_scope": "EXPERIMENTAL_UNVALIDATED",
+  "warning": "UNVALIDATED experimental class from a synthetic-trained model applied to real Kap_7 sensor features; not for patient notification or clinical action."
+}

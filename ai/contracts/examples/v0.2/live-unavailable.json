@@ -1,0 +1,15 @@
+{
+  "runtime_output_version": "0.2.0",
+  "mode": "LIVE",
+  "data_source": "NONE",
+  "model_status": "UNAVAILABLE",
+  "prediction_available": false,
+  "risk_class": null,
+  "risk_class_index": null,
+  "source_window_end_ms": null,
+  "model_input_channel": null,
+  "model_artifact_version": null,
+  "model_artifact_sha256": null,
+  "evidence_scope": "NO_PREDICTION",
+  "warning": "No usable AI prediction is available; no OSTOSENSE risk class was produced."
+}

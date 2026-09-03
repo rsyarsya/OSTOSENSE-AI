@@ -1,7 +1,8 @@
 // Portable host-side capacitive-feature kernel for OSTOSENSE (pipeline test only).
 //
 // SYNTHETIC_PIPELINE_TEST_ONLY. This header-only, dependency-free C++17 kernel
-// reproduces the five canonical baseline-normalized capacitive features computed
+// reproduces the five canonical baseline-adjusted (raw minus session baseline)
+// capacitive features computed
 // by ai/src/ostosense_ai/features.py over a single (t-W, t] window of 120 raw
 // samples, so a portable "120 raw samples -> five features -> ordinal inference"
 // path can be checked for parity with the Python reference. It is written to be

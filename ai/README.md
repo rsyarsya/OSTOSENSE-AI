@@ -9,8 +9,10 @@ host-side portable C++ inference parity, host-side portable C++
 capacitive-feature parity, and a deterministic real-data intake/QC gate are
 implemented for pipeline testing and real-data readiness. A deterministic
 software-facing runtime-output contract is also implemented for safe integration
-demos. Training/evaluation on labeled real sealed data, an approved LIVE model,
-and ESP32 hardware/sensor integration are not implemented yet.
+demos. Version 0.2 can expose an explicitly unvalidated class from real `Kap_7`
+features for engineering integration. Training/evaluation on labeled real sealed
+data, a validated LIVE model, and on-device ESP32 feature/inference integration
+are not implemented yet.
 
 ## Minimal usage
 
@@ -60,6 +62,16 @@ cd ai
 .venv/bin/python -m pip install -e ".[pipeline]"
 ```
 
+Repository quality tools are available separately through `.[quality]`; install
+both extras and run the same gate used by CI with:
+
+```bash
+cd ai
+.venv/bin/python -m pip install -e ".[pipeline,quality]"
+cd ..
+./scripts/verify.sh
+```
+
 The selected trainer is `mord.LogisticAT`, an all-threshold ordinal logistic
 model with L2 regularization and exportable `coef_`/`theta_` parameters.
 `scikit-learn` provides scaling and established metrics; dataset partitions
@@ -106,8 +118,9 @@ produced.
 `ostosense_ai.features` converts contract-valid `sessions.csv` + `samples.csv`
 into an auditable `features.csv` plus a deterministic `feature_manifest.json`.
 It is dependency-free (standard library + `ostosense_contract`). The only AI
-signal is the capacitive channel; it emits five baseline-normalized features
-(`cap_delta_mean`, `cap_delta_last`, `cap_delta_slope_per_s`,
+signal is the capacitive channel; it emits five baseline-adjusted features
+(`delta = capacitance_raw - session baseline`): `cap_delta_mean`,
+`cap_delta_last`, `cap_delta_slope_per_s`,
 `cap_delta_variance`, `cap_delta_range`) in the fixed `FEATURE_COLUMNS` tuple.
 LIG, events, arm, timing, and identifiers are never features. It produces no
 Safe/Monitor/Caution/Urgent labels, no model, and no B1/B2/B3 boundaries.
@@ -301,7 +314,7 @@ the ordinal class needed by software and keeps direct LIG leak status, bag fill,
 sensor quality, identity, timestamps, and notification policy in their own
 system contracts.
 
-Version `0.1.0` supports two honest states:
+Version `0.1.0` remains immutable and supports two states:
 
 - `LIVE` + `UNAVAILABLE`: no approved real-data model is shipped, so
   `prediction_available=false` and the class/index are `null`.
@@ -309,14 +322,24 @@ Version `0.1.0` supports two honest states:
   may produce `Safe`, `Monitor`, `Caution`, or `Urgent` for integration testing.
   It must never trigger a patient notification.
 
-Generate the current LIVE state from `ai/src`:
+Version `0.2.0` adds source-window and model-hash provenance plus one constrained
+engineering state:
+
+- `LIVE_EXPERIMENTAL` + `REAL_SENSOR` + `UNVALIDATED`: the existing
+  synthetic-trained model may consume the five canonical features from `Kap_7`.
+  This proves data-flow integration only. Software must display
+  `AI Eksperimental: <risk_class>` and must not trigger a patient notification.
+- Invalid, incomplete, or unavailable sensor windows use `LIVE` + `UNAVAILABLE`;
+  software must not retain a previous class as if it were current.
+
+Generate the v0.2 unavailable state from `ai/src`:
 
 ```bash
-../.venv/bin/python -m ostosense_ai.runtime_output unavailable \
+../.venv/bin/python -m ostosense_ai.runtime_output unavailable-v2 \
   --output /tmp/ostosense-ai-live.json
 ```
 
-Run an explicitly synthetic integration test:
+Run an explicitly synthetic v0.1 integration test:
 
 ```bash
 ../.venv/bin/python -m ostosense_ai.runtime_output predict-test \
@@ -325,9 +348,39 @@ Run an explicitly synthetic integration test:
   --output /tmp/ostosense-ai-test.json
 ```
 
+For an engineering-only real-sensor integration, supply one structurally valid
+five-feature `Kap_7` window. This input deliberately locks the raw-minus-baseline
+basis and feature order; `Kap_7_delta_norm` from the descriptive pilot report is
+not compatible:
+
+```json
+{
+  "feature_input_version": "0.1.0",
+  "data_source": "REAL_SENSOR",
+  "model_input_channel": "Kap_7",
+  "source_window_end_ms": 120000,
+  "feature_basis": "RAW_MINUS_SESSION_BASELINE",
+  "feature_order": [
+    "cap_delta_mean",
+    "cap_delta_last",
+    "cap_delta_slope_per_s",
+    "cap_delta_variance",
+    "cap_delta_range"
+  ],
+  "features": [0.0, 0.0, 0.0, 0.0, 0.0]
+}
+```
+
+```bash
+../.venv/bin/python -m ostosense_ai.runtime_output predict-live-experimental \
+  --model /path/to/ordinal_model.json \
+  --features /path/to/kap7_feature.json \
+  --output /tmp/ostosense-ai-live-experimental.json
+```
+
 The machine-readable schema and checked examples are in `contracts/`; the
 software display rules, domain separation, and `MUST FIX` handoff list are in
-`../docs/ai-software-integration-contract-v0.1.md`. The payload contains no
+`../docs/ai-software-integration-contract-v0.2.md`. The payload contains no
 probabilities, risk percentage, countdown, LIG state, bag-fill estimate,
 humidity, notification, or clinical action.
 
@@ -404,7 +457,7 @@ performance.
 
 `firmware/include/ostosense/capacitive_features.hpp` is a dependency-free,
 header-only C++17 `ComputeCapacitiveFeatures(samples, count, baseline, &out)`
-that reproduces the five baseline-normalized capacitive features from
+that reproduces the five baseline-adjusted (`raw - session baseline`) features from
 `features.py` over one `(t-W,t]` window of 120 raw samples (`cap_delta_mean`,
 `cap_delta_last`, `cap_delta_slope_per_s`, `cap_delta_variance`,
 `cap_delta_range`). It consumes only the capacitive channel (never
@@ -534,6 +587,10 @@ median so every session has equal weight. P006 is excluded because it is a
 sensor-fault test. The first 20 seconds have not been independently verified as
 dry, and the files have no exact per-window risk labels; therefore these outputs
 must not be used to train or evaluate the four-class classifier.
+
+The public repository stores only the audited inventory and hashes at
+`data-manifests/real-pilot-v0.1.inventory.json`; raw P001-P007 CSVs remain
+outside the repository.
 
 `ostosense_ai.pilot_reporting` produces four deterministic 300-dpi PNGs and an
 inspectable optimizer trace. It keeps evidence sources explicit: feature flow

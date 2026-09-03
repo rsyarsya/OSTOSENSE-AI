@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "ostosense-contract"
 version = "0.1.0"
 description = "OSTOSENSE Tier 1 data contract and offline AI pipeline tools"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = []
 
 [project.optional-dependencies]
@@ -17,6 +17,27 @@ pipeline = [
     "scikit-learn==1.9.0",
     "scipy==1.14.1",
 ]
+quality = [
+    "build==1.6.0",
+    "jsonschema==4.26.0",
+    "pyright==1.1.411",
+    "ruff==0.16.5",
+]
+
+[tool.pyright]
+include = ["src", "tests"]
+exclude = ["build"]
+extraPaths = ["src"]
+pythonVersion = "3.11"
+typeCheckingMode = "basic"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["build"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B023"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

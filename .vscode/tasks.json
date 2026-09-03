@@ -12,9 +12,9 @@
       "problemMatcher": []
     },
     {
-      "label": "OSTOSENSE: C++ contract test",
+      "label": "OSTOSENSE: C++ host tests",
       "type": "shell",
-      "command": "g++ -std=c++17 -Wall -Wextra -pedantic -I firmware/include firmware/tests/data_contract_test.cpp -o /tmp/ostosense-data-contract-test && /tmp/ostosense-data-contract-test",
+      "command": "for name in data_contract ordinal_inference capacitive_features; do g++ -std=c++17 -Wall -Wextra -Werror -pedantic -I firmware/include firmware/tests/${name}_test.cpp -o /tmp/ostosense-${name}-test && /tmp/ostosense-${name}-test || exit 1; done",
       "options": {
         "cwd": "${workspaceFolder}"
       },
@@ -28,12 +28,22 @@
       "dependsOrder": "sequence",
       "dependsOn": [
         "OSTOSENSE: Python unit tests",
-        "OSTOSENSE: C++ contract test"
+        "OSTOSENSE: C++ host tests"
       ],
       "group": {
         "kind": "test",
         "isDefault": true
       },
+      "problemMatcher": []
+    },
+    {
+      "label": "OSTOSENSE: Full quality gate",
+      "type": "shell",
+      "command": "./scripts/verify.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
       "problemMatcher": []
     }
   ]
