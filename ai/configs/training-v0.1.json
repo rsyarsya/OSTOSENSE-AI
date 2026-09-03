@@ -1,0 +1,14 @@
+{
+  "config_id": "training-v0.1",
+  "status": "ENGINEERING_TEST_ONLY",
+  "accepted_dataset_origin": "SYNTHETIC_PIPELINE_TEST_ONLY",
+  "fit_partition": "development",
+  "ignored_partition": "validation",
+  "forbidden_partition": "final_test",
+  "preprocessing": "sklearn.preprocessing.StandardScaler",
+  "model": "mord.LogisticAT",
+  "alpha": 1.0,
+  "max_iter": 10000,
+  "sample_weighting": "uniform_window",
+  "warning": "ENGINEERING_TEST_ONLY. These preprocessing/model/alpha/max_iter choices are fixed synthetic-pipeline test values, not tuned or pilot-derived. This config trains only on SYNTHETIC_PIPELINE_TEST_ONLY data and proves training/export mechanics, never OSTOSENSE performance. No random seed field exists because this training operation contains no random step."
+}

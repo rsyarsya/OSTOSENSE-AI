@@ -1,0 +1,12 @@
+session_id,protocol_version,planned_arm,planned_safe_horizon_s,target_fill_or_volume,injection_profile,injection_method,planned_flow_ml_min,physical_leak_observation_method,operator_id,bag_id,sensor_id,device_id
+syn-safe-001,v0.1-SYNTHETIC_TEST_ONLY,SAFE,180,SYNTHETIC_TEST_ONLY,,,,,synthetic-operator-001,synthetic-bag-safe-a,synthetic-sensor-safe-a,synthetic-device-001
+syn-safe-002,v0.1-SYNTHETIC_TEST_ONLY,SAFE,180,SYNTHETIC_TEST_ONLY,,,,,synthetic-operator-001,synthetic-bag-safe-a,synthetic-sensor-safe-a,synthetic-device-001
+syn-gradual-observed-first-001,v0.1-SYNTHETIC_TEST_ONLY,LEAK_GRADUAL,,SYNTHETIC_TEST_ONLY,stepwise,manual_syringe,20,SYNTHETIC,synthetic-operator-001,synthetic-bag-leak-a,synthetic-sensor-leak-a,synthetic-device-001
+syn-gradual-flag-first-001,v0.1-SYNTHETIC_TEST_ONLY,LEAK_GRADUAL,,SYNTHETIC_TEST_ONLY,stepwise,manual_syringe,20,SYNTHETIC,synthetic-operator-001,synthetic-bag-leak-a,synthetic-sensor-leak-a,synthetic-device-001
+syn-sudden-001,v0.1-SYNTHETIC_TEST_ONLY,LEAK_SUDDEN,,SYNTHETIC_TEST_ONLY,,,,SYNTHETIC,synthetic-operator-001,synthetic-bag-leak-b,synthetic-sensor-leak-b,synthetic-device-001
+syn-fault-cap-001,v0.1-SYNTHETIC_TEST_ONLY,SAFE,180,SYNTHETIC_TEST_ONLY,,,,,synthetic-operator-001,synthetic-bag-qc-a,synthetic-sensor-qc-a,synthetic-device-001
+syn-fault-gap-001,v0.1-SYNTHETIC_TEST_ONLY,SAFE,180,SYNTHETIC_TEST_ONLY,,,,,synthetic-operator-001,synthetic-bag-qc-a,synthetic-sensor-qc-a,synthetic-device-001
+syn-fault-cal-001,v0.1-SYNTHETIC_TEST_ONLY,SAFE,180,SYNTHETIC_TEST_ONLY,,,,,synthetic-operator-001,synthetic-bag-qc-b,synthetic-sensor-qc-b,synthetic-device-001
+syn-fault-both-001,v0.1-SYNTHETIC_TEST_ONLY,SAFE,180,SYNTHETIC_TEST_ONLY,,,,,synthetic-operator-001,synthetic-bag-qc-b,synthetic-sensor-qc-b,synthetic-device-001
+syn-safe-validation-001,v0.1-SYNTHETIC_TEST_ONLY,SAFE,180,SYNTHETIC_TEST_ONLY,,,,,synthetic-operator-001,synthetic-bag-validation-safe-a,synthetic-sensor-validation-safe-a,synthetic-device-001
+syn-gradual-validation-001,v0.1-SYNTHETIC_TEST_ONLY,LEAK_GRADUAL,,SYNTHETIC_TEST_ONLY,stepwise,manual_syringe,20,SYNTHETIC,synthetic-operator-001,synthetic-bag-validation-leak-a,synthetic-sensor-validation-leak-a,synthetic-device-001

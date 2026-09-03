@@ -1,0 +1,12 @@
+session_id,dataset_partition,partition_version,bag_id,sensor_id
+syn-safe-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-safe-a,synthetic-sensor-safe-a
+syn-safe-002,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-safe-a,synthetic-sensor-safe-a
+syn-gradual-observed-first-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-leak-a,synthetic-sensor-leak-a
+syn-gradual-flag-first-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-leak-a,synthetic-sensor-leak-a
+syn-sudden-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-leak-b,synthetic-sensor-leak-b
+syn-fault-cap-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-qc-a,synthetic-sensor-qc-a
+syn-fault-gap-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-qc-a,synthetic-sensor-qc-a
+syn-fault-cal-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-qc-b,synthetic-sensor-qc-b
+syn-fault-both-001,development,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-qc-b,synthetic-sensor-qc-b
+syn-safe-validation-001,validation,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-validation-safe-a,synthetic-sensor-validation-safe-a
+syn-gradual-validation-001,validation,ostosense-evaluation-v0.1-SYNTHETIC_TEST_ONLY,synthetic-bag-validation-leak-a,synthetic-sensor-validation-leak-a
