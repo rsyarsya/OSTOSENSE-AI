@@ -1,16 +1,24 @@
 import unittest
+from typing import TYPE_CHECKING
 
 from ostosense_ai.evaluation import evaluate_predictions
 
-try:
+if TYPE_CHECKING:
     import numpy as np
     from mord import LogisticAT
     from sklearn.model_selection import GroupShuffleSplit
     from sklearn.preprocessing import StandardScaler
-except ModuleNotFoundError:
-    PIPELINE_DEPENDENCIES_AVAILABLE = False
-else:
     PIPELINE_DEPENDENCIES_AVAILABLE = True
+else:
+    try:
+        import numpy as np
+        from mord import LogisticAT
+        from sklearn.model_selection import GroupShuffleSplit
+        from sklearn.preprocessing import StandardScaler
+    except ModuleNotFoundError:
+        PIPELINE_DEPENDENCIES_AVAILABLE = False
+    else:
+        PIPELINE_DEPENDENCIES_AVAILABLE = True
 
 
 @unittest.skipUnless(

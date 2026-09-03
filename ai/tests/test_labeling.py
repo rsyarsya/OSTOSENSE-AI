@@ -46,7 +46,12 @@ def _ok_samples(base: int, duration: int, *, warmup: int = 0, lig_ok: bool = Tru
     return rows
 
 
-def _write_dataset(root: Path, sessions: list[dict], *, origin="SYNTHETIC_PIPELINE_TEST_ONLY"):
+def _write_dataset(
+    root: Path,
+    sessions: list[dict],
+    *,
+    origin: str | None = "SYNTHETIC_PIPELINE_TEST_ONLY",
+):
     input_dir = root / "input"
     logger = Tier1CsvLogger(input_dir)
     for spec in sessions:
@@ -136,7 +141,15 @@ def _write_dataset(root: Path, sessions: list[dict], *, origin="SYNTHETIC_PIPELI
     return input_dir, protocol_path, partition_path
 
 
-def _run(root, sessions, *, boundary=GOOD_BOUNDARY, features_dir=None, overwrite=False, origin="SYNTHETIC_PIPELINE_TEST_ONLY"):
+def _run(
+    root,
+    sessions,
+    *,
+    boundary=GOOD_BOUNDARY,
+    features_dir=None,
+    overwrite=False,
+    origin: str | None = "SYNTHETIC_PIPELINE_TEST_ONLY",
+):
     input_dir, protocol_path, partition_path = _write_dataset(root, sessions, origin=origin)
     return label_dataset(
         input_dir,

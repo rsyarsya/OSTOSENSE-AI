@@ -16,6 +16,15 @@ __pycache__/
 # Agent/session local state
 .agents/
 .codex/
+.claude/
+AGENTS.md
+CLAUDE.md
+SKILL.md
+docs/superpowers/
+
+# Separate software repositories and local source archive
+software/
+references/
 
 # Secrets and local environment
 .env
@@ -34,3 +43,10 @@ Thumbs.db
 build/
 dist/
 *.egg-info/
+
+# Local pipeline runs and generated artifacts
+data/raw/
+data/interim/
+data/processed/
+artifacts/
+outputs/

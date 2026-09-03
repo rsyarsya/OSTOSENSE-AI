@@ -15,12 +15,24 @@
   "files.exclude": {
     "**/__pycache__": true,
     "**/.pytest_cache": true,
-    "**/.mypy_cache": true
+    "**/.mypy_cache": true,
+    "**/.backup": true,
+    "**/node_modules": true,
+    "ai/build": true
   },
   "search.exclude": {
     "ai/.venv": true,
+    "ai/build": true,
+    "**/.backup": true,
+    "**/node_modules": true,
     "**/__pycache__": true
   },
+  "python.analysis.exclude": [
+    "ai/.venv/**",
+    "ai/build/**",
+    "**/.backup/**",
+    "**/node_modules/**"
+  ],
   "python.analysis.extraPaths": [
     "${workspaceFolder}/ai/src"
   ]

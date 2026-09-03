@@ -3,16 +3,11 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-try:
+if TYPE_CHECKING:
     import numpy as np
-except ModuleNotFoundError:
-    DEPENDENCIES_AVAILABLE = False
-else:
     DEPENDENCIES_AVAILABLE = True
-
-
-if DEPENDENCIES_AVAILABLE:
     from ostosense_ai import synthetic
     from ostosense_contract import (
         Arm,
@@ -23,6 +18,23 @@ if DEPENDENCIES_AVAILABLE:
         SystemQuality,
         aggregate_system_quality,
     )
+else:
+    try:
+        import numpy as np
+    except ModuleNotFoundError:
+        DEPENDENCIES_AVAILABLE = False
+    else:
+        DEPENDENCIES_AVAILABLE = True
+        from ostosense_ai import synthetic
+        from ostosense_contract import (
+            Arm,
+            CapQuality,
+            EndReason,
+            EventType,
+            LigQuality,
+            SystemQuality,
+            aggregate_system_quality,
+        )
 
 
 CONFIG_PATH = Path(__file__).resolve().parents[1] / "configs" / "synthetic-v0.2.json"

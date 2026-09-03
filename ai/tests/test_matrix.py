@@ -133,6 +133,8 @@ def _edit_json(path: Path, mutator):
 def _edit_csv(path: Path, mutator):
     with path.open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
+        if reader.fieldnames is None:
+            raise AssertionError("test CSV must contain a header")
         fields = list(reader.fieldnames)
         rows = list(reader)
     mutator(rows, fields)
