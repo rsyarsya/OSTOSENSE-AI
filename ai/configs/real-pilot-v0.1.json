@@ -1,0 +1,105 @@
+{
+  "config_id": "real-pilot-v0.1",
+  "status": "REAL_PILOT_UNLABELED",
+  "expected_interval_ms": 100,
+  "samples_per_second": 10,
+  "baseline_seconds": 20,
+  "window_seconds": 120,
+  "stride_seconds": 10,
+  "window_interval": "(t-W,t]",
+  "allowed_statuses": [
+    "NOT_EVALUATED",
+    "OK",
+    "DISCONNECTED",
+    "SATURATED"
+  ],
+  "model_channels": [
+    "Kap_4",
+    "Kap_5",
+    "Kap_7"
+  ],
+  "audit_only_channels": [
+    "Res_15",
+    "Res_16"
+  ],
+  "sessions": [
+    {
+      "session_id": "P001",
+      "file_name": "P001.csv",
+      "scenario": "kering_diam",
+      "position": "tidak_dicatat",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P002",
+      "file_name": "P002.csv",
+      "scenario": "kering_dengan_gerakan",
+      "position": "bervariasi",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P003",
+      "file_name": "P003.csv",
+      "scenario": "pengisian_kantong_bertahap",
+      "position": "tidak_dicatat",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P004-1",
+      "file_name": "P004.csv",
+      "scenario": "kebocoran_bertahap",
+      "position": "tidak_dicatat",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P004-2",
+      "file_name": "P004_2.csv",
+      "scenario": "kebocoran_bertahap",
+      "position": "tidak_dicatat",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P004-3",
+      "file_name": "P004_3.csv",
+      "scenario": "kebocoran_bertahap",
+      "position": "berbaring",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P005-1",
+      "file_name": "P005.csv",
+      "scenario": "kebocoran_mendadak",
+      "position": "tidak_dicatat",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P005-2",
+      "file_name": "P005_2.csv",
+      "scenario": "kebocoran_mendadak",
+      "position": "duduk",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P005-3",
+      "file_name": "P005_3.csv",
+      "scenario": "kebocoran_mendadak",
+      "position": "berbaring",
+      "include_in_correlation": true
+    },
+    {
+      "session_id": "P006",
+      "file_name": "P006.csv",
+      "scenario": "uji_gangguan_sensor",
+      "position": "tidak_dicatat",
+      "include_in_correlation": false
+    },
+    {
+      "session_id": "P007",
+      "file_name": "P007.csv",
+      "scenario": "kantong_diisi_sampai_penuh",
+      "position": "tidak_dicatat",
+      "include_in_correlation": true
+    }
+  ],
+  "warning": "REAL_PILOT_UNLABELED. Data ini digunakan untuk pemeriksaan kualitas, ekstraksi fitur tanpa label, dan analisis korelasi deskriptif. Baseline 20 detik bersifat sementara karena awal sesi belum diverifikasi sebagai kondisi kering. Data ini tidak membuktikan akurasi AI, performa peringatan, validitas sensor, atau manfaat klinis."
+}

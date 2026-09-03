@@ -11,6 +11,7 @@ dependencies = []
 
 [project.optional-dependencies]
 pipeline = [
+    "matplotlib==3.11.1",
     "mord==0.7",
     "numpy==2.2.6",
     "scikit-learn==1.9.0",
