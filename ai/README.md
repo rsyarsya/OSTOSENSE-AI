@@ -14,6 +14,28 @@ features for engineering integration. Training/evaluation on labeled real sealed
 data, a validated LIVE model, and on-device ESP32 feature/inference integration
 are not implemented yet.
 
+## Bundled model and server integration
+
+The package now includes `model_assets/engineering_v03/ordinal_model.json`, its
+training manifest, integrity hashes, a model card, and four actual synthetic
+inference examples. `python -m ostosense_ai.bundled_model` works without the
+pipeline dependencies, including from an installed wheel outside the repository.
+
+`integration_cli` emits deterministic examples or evaluates an operator-confirmed
+raw request; it refuses overwrites by default. `live_window` computes the same five
+canonical features without mutating raw input. It explicitly retains unverified
+quality as `OPERATOR_ONLY` rather than converting `NOT_EVALUATED` to `OK`.
+
+The optional `[serve]` extra runs an authenticated, stateless HTTP adapter via
+`python -m ostosense_ai.service`. Both test and experimental modes are disabled
+by default. Tests use `[serve-test]` in addition to the existing quality stack.
+Pin the server stack with `requirements-serve.lock`. Model/runtime versions and
+the Tier 1 data/label contracts remain unchanged.
+
+See the [server setup and request contract](../docs/ai-service-integration-v0.1.md)
+and [consumer work still required](../docs/software-must-fix-2026-09-08.md).
+The service is not an ESP32 application or a validated real-data predictor.
+
 ## Minimal usage
 
 ```python
@@ -62,12 +84,12 @@ cd ai
 .venv/bin/python -m pip install -e ".[pipeline]"
 ```
 
-Repository quality tools are available separately through `.[quality]`; install
-both extras and run the same gate used by CI with:
+Repository quality tools are available separately through `.[quality]`. The full
+gate also exercises the optional HTTP service; install its test dependencies with:
 
 ```bash
 cd ai
-.venv/bin/python -m pip install -e ".[pipeline,quality]"
+.venv/bin/python -m pip install -c requirements-serve.lock -e ".[pipeline,quality,serve,serve-test]"
 cd ..
 ./scripts/verify.sh
 ```

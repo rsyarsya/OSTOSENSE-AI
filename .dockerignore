@@ -1,0 +1,14 @@
+**
+!ai/
+!ai/pyproject.toml
+!ai/README.md
+!ai/MANIFEST.in
+!ai/requirements-serve.lock
+!ai/src/
+!ai/src/ostosense_ai/
+!ai/src/ostosense_ai/**
+!ai/src/ostosense_contract/
+!ai/src/ostosense_contract/**
+**/__pycache__
+**/*.pyc
+**/.env*

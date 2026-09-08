@@ -6,7 +6,7 @@ PYTHON_BIN="${PYTHON:-$ROOT_DIR/ai/.venv/bin/python}"
 
 if [[ ! -x "$PYTHON_BIN" ]]; then
   echo "Python tidak ditemukan di $PYTHON_BIN" >&2
-  echo "Buat environment lalu install: cd ai && python3.11 -m venv .venv && .venv/bin/pip install -e '.[pipeline,quality]'" >&2
+  echo "Buat environment lalu install: cd ai && python3 -m venv .venv && .venv/bin/pip install -c requirements-serve.lock -e '.[pipeline,quality,serve,serve-test]'" >&2
   exit 1
 fi
 
@@ -17,7 +17,7 @@ if sys.version_info < (3, 11):
     raise SystemExit("OSTOSENSE AI memerlukan Python 3.11 atau lebih baru")
 
 missing = []
-for module in ("build", "jsonschema", "pyright", "ruff"):
+for module in ("build", "jsonschema", "pyright", "ruff", "fastapi", "httpx"):
     try:
         __import__(module)
     except ImportError:
@@ -25,7 +25,7 @@ for module in ("build", "jsonschema", "pyright", "ruff"):
 if missing:
     raise SystemExit(
         "Quality tools belum lengkap: " + ", ".join(missing)
-        + ". Jalankan: cd ai && .venv/bin/pip install -e '.[pipeline,quality]'"
+        + ". Jalankan: cd ai && .venv/bin/pip install -c requirements-serve.lock -e '.[pipeline,quality,serve,serve-test]'"
     )
 PY
 
@@ -46,8 +46,10 @@ TEMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TEMP_DIR"' EXIT
 (cd "$ROOT_DIR/ai" && "$PYTHON_BIN" -m build --outdir "$TEMP_DIR/dist")
 "$PYTHON_BIN" -m venv "$TEMP_DIR/smoke-venv"
-"$TEMP_DIR/smoke-venv/bin/python" -m pip install --no-deps "$TEMP_DIR"/dist/*.whl >/dev/null
-(cd "$TEMP_DIR" && "$TEMP_DIR/smoke-venv/bin/python" -c "import ostosense_ai, ostosense_contract")
+# Isolate installation too: source egg-info on PYTHONPATH can make pip skip the wheel.
+"$TEMP_DIR/smoke-venv/bin/python" -I -m pip install --no-deps "$TEMP_DIR"/dist/*.whl >/dev/null
+(cd "$TEMP_DIR" && "$TEMP_DIR/smoke-venv/bin/python" -I -c "import ostosense_ai, ostosense_contract; from importlib.metadata import version; assert ostosense_ai.__version__ == version('ostosense-contract')")
+(cd "$TEMP_DIR" && "$TEMP_DIR/smoke-venv/bin/python" -I -m ostosense_ai.bundled_model)
 
 echo "[5/6] Portable C++17 tests"
 for name in data_contract ordinal_inference capacitive_features; do

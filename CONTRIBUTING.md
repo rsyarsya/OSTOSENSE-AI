@@ -5,14 +5,14 @@ salinan repository yang bersih:
 
 ```bash
 cd ai
-python3.11 -m venv .venv
-.venv/bin/python -m pip install -e ".[pipeline,quality]"
+python3 -m venv .venv
+.venv/bin/python -m pip install -c requirements-serve.lock -e ".[pipeline,quality,serve,serve-test]"
 cd ..
 ./scripts/verify.sh
 ```
 
-`scripts/verify.sh` menjalankan test Python, validasi JSON Schema, Ruff,
-Pyright, build package, clean-wheel import, ketiga test C++ host-side, dan
+`scripts/verify.sh` menjalankan test Python/HTTP lokal, validasi JSON Schema,
+Ruff, Pyright, build package, pemuatan model dari wheel terisolasi, ketiga test C++ host-side, dan
 pemeriksaan file terlarang. Perubahan hanya siap direview ketika seluruh gate
 lulus.
 

@@ -12,6 +12,8 @@ agar backend, aplikasi, dan web dapat membaca satu kelas risiko berurutan:
 - Data uji alat P001-P007 saat ini dipakai untuk pemeriksaan kualitas dan
   analisis deskriptif, bukan untuk klaim akurasi model.
 - Inferensi Python dan kernel C++ telah diuji untuk paritas sisi-host.
+- Model uji siap pakai sekarang disertakan dalam paket Python, bersama layanan
+  HTTP opsional dan pengolah raw `Kap_7`. Tidak perlu training untuk menjalankannya.
 - Model sintetis dapat menerima fitur sensor nyata `Kap_7` untuk demonstrasi
   integrasi langsung. Keluarannya wajib ditandai `AI Eksperimental` dan belum
   boleh digunakan untuk notifikasi atau keputusan klinis.
@@ -23,14 +25,24 @@ akurasi OSTOSENSE, validitas sensor, kinerja notifikasi, atau manfaat klinis.
 
 ## Mulai cepat
 
-Clone dan siapkan lingkungan Python dari Linux:
+Clone dan siapkan lingkungan Python 3.11 atau 3.12 dari Linux:
 
 ```bash
 git clone https://github.com/rsyarsya/OSTOSENSE-AI.git
 cd OSTOSENSE-AI/ai
-python3.11 -m venv .venv
+python3 -m venv .venv
 .venv/bin/python -m pip install -e .
+.venv/bin/python -m ostosense_ai.bundled_model
 ```
+
+Perintah terakhir memuat model bawaan dan menghitung empat contoh kelas
+simulasi. [File model dan catatan penggunaan](ai/src/ostosense_ai/model_assets/engineering_v03/)
+tersedia langsung, bukan hanya script pelatihannya.
+
+Untuk tim software, lanjutkan ke
+[panduan menjalankan layanan AI](docs/ai-service-integration-v0.1.md) dan
+[MUST FIX backend, mobile, web](docs/software-must-fix-2026-09-08.md).
+Layanan siap diuji di server tidak berarti software/ESP32 sudah di-deploy.
 
 Jalankan seluruh tes dependency-free:
 
@@ -44,14 +56,14 @@ Stack pelatihan, visualisasi, dan quality tools bersifat opsional dan terpin:
 
 ```bash
 cd ..
-.venv/bin/python -m pip install -e ".[pipeline,quality]"
+.venv/bin/python -m pip install -c requirements-serve.lock -e ".[pipeline,quality,serve,serve-test]"
 cd ..
 ./scripts/verify.sh
 ```
 
 ## Integrasi software
 
-Mulai dari tiga artefak berikut:
+Mulai dari artefak berikut:
 
 1. [Kontrak integrasi software](docs/ai-software-integration-contract-v0.2.md)
    menjelaskan aturan tampilan, batas tanggung jawab, dan daftar `MUST FIX`.
@@ -71,8 +83,8 @@ cd ai/src
   --output /tmp/ostosense-ai-live.json
 ```
 
-Membangun model dan satu payload simulasi deterministik untuk menguji integrasi
-software dari ujung ke ujung:
+Model bawaan dapat digunakan tanpa menjalankan training ulang. Script berikut
+hanya untuk mereproduksi pelatihan dan satu payload simulasi:
 
 ```bash
 cd "$(git rev-parse --show-toplevel)"

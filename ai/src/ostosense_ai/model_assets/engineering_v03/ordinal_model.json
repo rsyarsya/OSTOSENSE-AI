@@ -1,0 +1,62 @@
+{
+  "beta": [
+    1.547331972308,
+    2.090303059602,
+    1.071518138674,
+    0.73999520027,
+    1.585757435299
+  ],
+  "class_mapping": {
+    "Caution": 2,
+    "Monitor": 1,
+    "Safe": 0,
+    "Urgent": 3
+  },
+  "class_order": [
+    "Safe",
+    "Monitor",
+    "Caution",
+    "Urgent"
+  ],
+  "cumulative_probability_formula": "z=(x-mean)/scale; eta=beta^T z; P(Y<=k)=sigmoid(theta[k]-eta) for k in {0,1,2}; P(Y=0)=P(Y<=0); P(Y=j)=P(Y<=j)-P(Y<=j-1); P(Y=3)=1-P(Y<=2); class=argmax_j P(Y=j)",
+  "dataset_origin": "SYNTHETIC_PIPELINE_TEST_ONLY",
+  "feature_order": [
+    "cap_delta_mean",
+    "cap_delta_last",
+    "cap_delta_slope_per_s",
+    "cap_delta_variance",
+    "cap_delta_range"
+  ],
+  "hyperparameters": {
+    "alpha": 1.0,
+    "max_iter": 10000,
+    "model": "mord.LogisticAT",
+    "preprocessing": "sklearn.preprocessing.StandardScaler",
+    "sample_weighting": "uniform_window"
+  },
+  "model_artifact_version": "0.1.0",
+  "model_family": "mord.LogisticAT",
+  "scaler": {
+    "mean": [
+      0.597351868421,
+      1.302531486842,
+      0.010110144737,
+      0.389870868421,
+      1.385563223684
+    ],
+    "scale": [
+      1.041783500279,
+      1.879158047154,
+      0.014454470595,
+      0.600133085923,
+      1.577929035407
+    ]
+  },
+  "sign_convention": "eta = beta^T z; cumulative logits use (theta[k] - eta)",
+  "theta": [
+    -2.728372339698,
+    5.386336066551,
+    13.459127058322
+  ],
+  "warning": "ENGINEERING_TEST_ONLY synthetic model. Trained on SYNTHETIC_PIPELINE_TEST_ONLY data to exercise training/export mechanics only; not an OSTOSENSE performance, notification-accuracy, sensor, or clinical result."
+}

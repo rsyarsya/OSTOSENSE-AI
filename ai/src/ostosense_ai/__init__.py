@@ -1,5 +1,10 @@
 """OSTOSENSE offline AI pipeline and integration tools.
 
+The engineering model is packaged via `bundled_model`. `live_window` and
+`integration_cli` provide stateless operator-confirmed raw-window evaluation;
+`service` adds optional authenticated HTTP serving. Runtime v0.2 and the five
+feature formulas remain canonical. This is unvalidated integration only.
+
 This package will host the offline AI pipeline for the OSTOSENSE ordinal
 leakage-risk classifier: deterministic synthetic time-series generation,
 window feature extraction, and all-threshold ordinal logistic regression with
@@ -75,6 +80,6 @@ in docs/ostosense-ai-foundation.md and the structure-locked
 the separate ostosense_contract package.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__: list[str] = []

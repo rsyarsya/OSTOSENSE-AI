@@ -4,12 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ostosense-contract"
-version = "0.1.0"
-description = "OSTOSENSE Tier 1 data contract and offline AI pipeline tools"
+version = "0.2.0"
+description = "OSTOSENSE data contracts, engineering model, offline pipeline, and experimental AI service"
+readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
 
 [project.optional-dependencies]
+serve = ["fastapi==0.141.1", "uvicorn==0.52.4"]
+serve-test = ["httpx==0.28.1"]
 pipeline = [
     "matplotlib==3.11.1",
     "mord==0.7",
@@ -41,3 +44,6 @@ select = ["E4", "E7", "E9", "F", "B023"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+ostosense_ai = ["model_assets/engineering_v03/*.json", "model_assets/engineering_v03/*.md"]

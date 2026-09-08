@@ -1,0 +1,10 @@
+{
+  "request_version": "0.1.0",
+  "device_id": "EXAMPLE-ONLY-device",
+  "session_id": "EXAMPLE-ONLY-session",
+  "acquisition_id": "EXAMPLE-ONLY-acquisition",
+  "operator_confirmed": true,
+  "source_window_end_ms": 0,
+  "baseline_samples": [],
+  "window_samples": []
+}

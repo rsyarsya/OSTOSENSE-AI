@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ostosense.local/contracts/ai-raw-window-input-v0.1.schema.json",
+  "title": "Operator-confirmed raw Kap_7 window, experimental only",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["request_version", "device_id", "session_id", "acquisition_id", "operator_confirmed", "source_window_end_ms", "baseline_samples", "window_samples"],
+  "properties": {
+    "request_version": {"const": "0.1.0"},
+    "device_id": {"$ref": "#/$defs/id"},
+    "session_id": {"$ref": "#/$defs/id"},
+    "acquisition_id": {"$ref": "#/$defs/id"},
+    "operator_confirmed": {"type": "boolean"},
+    "source_window_end_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991, "multipleOf": 10000},
+    "baseline_samples": {"type": "array", "maxItems": 600, "items": {"$ref": "#/$defs/sample"}},
+    "window_samples": {"type": "array", "maxItems": 1200, "items": {"$ref": "#/$defs/sample"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "\\S"},
+    "sample": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sample_no", "elapsed_ms", "kap_7_raw", "kap_7_status"],
+      "properties": {
+        "sample_no": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "elapsed_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "kap_7_raw": {"type": "number", "minimum": 0, "maximum": 4294967295},
+        "kap_7_status": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

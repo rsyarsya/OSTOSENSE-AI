@@ -1,5 +1,12 @@
 # Kontrak Integrasi Keluaran AI OSTOSENSE v0.2
 
+Pembaruan implementasi 8 September 2026: model kini disertakan sebagai aset
+paket; CLI dan layanan raw-window tersedia. Lihat
+[panduan layanan AI](ai-service-integration-v0.1.md). Runtime v0.2 tidak berubah.
+Daftar pekerjaan konsumen terbaru berada di
+[MUST FIX tim software](software-must-fix-2026-09-08.md); daftar di bagian bawah
+dokumen ini merekam audit awal dan tidak membuktikan keadaan deployment saat ini.
+
 Dokumen ini adalah acuan integrasi baru untuk backend, aplikasi pasien, dan
 dashboard web. Kontrak mesin berada di
 `ai/contracts/ai-runtime-output-v0.2.schema.json`; tipe TypeScript berada di
@@ -140,7 +147,7 @@ File `runtime-engineering-test.json` pada direktori tersebut dapat dipakai untuk
 uji backend, mobile, dan web. Script menolak direktori output yang sudah ada dan
 tidak menulis model hasil generate ke repository.
 
-## MUST FIX tim software
+## MUST FIX tim software pada audit awal
 
 ### Backend (`ostosense-be`)
 

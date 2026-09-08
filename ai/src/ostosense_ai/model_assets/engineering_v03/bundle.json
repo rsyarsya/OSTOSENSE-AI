@@ -1,0 +1,10 @@
+{
+  "bundle_version": "0.1.0",
+  "dataset_origin": "SYNTHETIC_PIPELINE_TEST_ONLY",
+  "model_id": "engineering-v0.3",
+  "sha256": {
+    "examples.json": "60935fbace0e6359d2739f77e3b730e729f51937c61204fe7cf71f85743ccf96",
+    "ordinal_model.json": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+    "training_manifest.json": "01502a7eb26335f57a8a404ce4bb366ec5c594b19f510b25cfb0a7ba4ca96863"
+  }
+}

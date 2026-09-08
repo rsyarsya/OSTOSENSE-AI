@@ -1,5 +1,10 @@
 # Dokumentasi AI OSTOSENSE
 
+Untuk integrasi software terbaru, mulai dari
+[Menjalankan dan Menghubungkan Model AI](./ai-service-integration-v0.1.md) dan
+[MUST FIX Tim Software, 8 September 2026](./software-must-fix-2026-09-08.md).
+Model tersedia sebagai aset paket; deployment software/hardware tetap terpisah.
+
 Dokumentasi fondasi AI disusun dalam dua lapisan:
 
 1. [Fondasi Arsitektur AI OSTOSENSE](./ostosense-ai-foundation.md)

@@ -1,0 +1,24 @@
+{
+  "ai": {
+    "data_source": "NONE",
+    "evidence_scope": "NO_PREDICTION",
+    "mode": "LIVE",
+    "model_artifact_sha256": null,
+    "model_artifact_version": null,
+    "model_input_channel": null,
+    "model_status": "UNAVAILABLE",
+    "prediction_available": false,
+    "risk_class": null,
+    "risk_class_index": null,
+    "runtime_output_version": "0.2.0",
+    "source_window_end_ms": null,
+    "warning": "No usable AI prediction is available; no OSTOSENSE risk class was produced."
+  },
+  "diagnostics": {
+    "availability_reason": "COLLECTING_BASELINE",
+    "baseline_value": null,
+    "quality_verification": "UNKNOWN"
+  },
+  "feature_input": null,
+  "service_response_version": "0.1.0"
+}

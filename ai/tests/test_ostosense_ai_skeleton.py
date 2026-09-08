@@ -1,4 +1,6 @@
 import unittest
+import tomllib
+from pathlib import Path
 
 
 class OstosenseAiSkeletonTests(unittest.TestCase):
@@ -10,7 +12,10 @@ class OstosenseAiSkeletonTests(unittest.TestCase):
     def test_package_version_matches_project_release(self) -> None:
         import ostosense_ai
 
-        self.assertEqual(ostosense_ai.__version__, "0.1.0")
+        project = tomllib.loads(
+            (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text()
+        )
+        self.assertEqual(ostosense_ai.__version__, project["project"]["version"])
 
     def test_package_avoids_eager_public_imports(self) -> None:
         import ostosense_ai

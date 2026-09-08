@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ostosense.local/contracts/ai-service-response-v0.1.schema.json",
+  "title": "Internal AI service response (not a backend storage envelope)",
+  "type": "object", "additionalProperties": false,
+  "required": ["service_response_version", "ai", "diagnostics", "feature_input"],
+  "properties": {
+    "service_response_version": {"const": "0.1.0"},
+    "ai": {"$ref": "ai-runtime-output-v0.2.schema.json"},
+    "diagnostics": {
+      "type": "object", "additionalProperties": false,
+      "required": ["availability_reason", "quality_verification", "baseline_value"],
+      "properties": {
+        "availability_reason": {"enum": ["READY", "MODEL_UNAVAILABLE", "OPERATOR_CONFIRMATION_REQUIRED", "COLLECTING_BASELINE", "COLLECTING_WINDOW", "BASELINE_INCOMPLETE_DATA", "BASELINE_DUPLICATE_SAMPLE", "BASELINE_OUT_OF_ORDER", "BASELINE_DATA_GAP", "BASELINE_TIMING_OUT_OF_TOLERANCE", "BASELINE_SENSOR_PROBLEM", "INCOMPLETE_DATA", "DUPLICATE_SAMPLE", "OUT_OF_ORDER", "DATA_GAP", "TIMING_OUT_OF_TOLERANCE", "SENSOR_PROBLEM", "NUMERICAL_ERROR"]},
+        "quality_verification": {"enum": ["UNKNOWN", "OPERATOR_ONLY", "AUTOMATIC", "TEST_ONLY"]},
+        "baseline_value": {"type": ["number", "null"]}
+      }
+    },
+    "feature_input": {"oneOf": [{"type": "null"}, {"$ref": "ai-feature-input-v0.1.schema.json"}]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"ai": {"properties": {"prediction_available": {"const": false}}}}},
+      "then": {"properties": {"feature_input": {"type": "null"}, "diagnostics": {"properties": {"availability_reason": {"not": {"const": "READY"}}, "baseline_value": {"type": "null"}}}}},
+      "else": {"properties": {"feature_input": {"type": "object"}, "diagnostics": {"properties": {"availability_reason": {"const": "READY"}}}}}
+    },
+    {
+      "if": {"properties": {"ai": {"properties": {"model_status": {"const": "TEST_ONLY"}}}}},
+      "then": {"properties": {
+        "feature_input": {"properties": {"data_source": {"const": "SYNTHETIC_FIXTURE"}, "model_input_channel": {"const": "SYNTHETIC_CAPACITIVE"}}},
+        "diagnostics": {"properties": {"quality_verification": {"const": "TEST_ONLY"}, "baseline_value": {"type": "null"}}}
+      }}
+    },
+    {
+      "if": {"properties": {"ai": {"properties": {"model_status": {"const": "UNVALIDATED"}}}}},
+      "then": {"properties": {
+        "feature_input": {"properties": {"data_source": {"const": "REAL_SENSOR"}, "model_input_channel": {"const": "Kap_7"}}},
+        "diagnostics": {"properties": {"quality_verification": {"enum": ["OPERATOR_ONLY", "AUTOMATIC"]}, "baseline_value": {"type": "number", "minimum": 0, "maximum": 4294967295}}}
+      }}
+    }
+  ]
+}

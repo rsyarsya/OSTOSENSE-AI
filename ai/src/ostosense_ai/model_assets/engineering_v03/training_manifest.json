@@ -1,0 +1,63 @@
+{
+  "config_id": "training-v0.1",
+  "data_contract_version": "v1.1",
+  "dataset_origin": "SYNTHETIC_PIPELINE_TEST_ONLY",
+  "dependency_versions": {
+    "mord": "0.7",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.14.1"
+  },
+  "fit_partition_policy": {
+    "fit": "development",
+    "forbidden": "final_test",
+    "ignored": "validation"
+  },
+  "fitted_bag_count": 2,
+  "fitted_class_counts": {
+    "Caution": 12,
+    "Monitor": 16,
+    "Safe": 42,
+    "Urgent": 6
+  },
+  "fitted_row_count": 76,
+  "fitted_sensor_count": 2,
+  "fitted_session_count": 4,
+  "ignored_row_count": 38,
+  "input_sha256": {
+    "matrix_manifest_json": "f0347917fc5fc457a0dff443271e4cd77e828c579221110616395a69a6c8e3a4",
+    "model_matrix_csv": "02d14c773b0a16b11aa213761f88c67580d177868ed08c04eb66b6556ffe979e",
+    "training_config_json": "80a17c7b557319decad1608c0bc9b2e84d7f7b84d1661a237f511cbaefe69e2e"
+  },
+  "model_artifact_version": "0.1.0",
+  "model_sanity": {
+    "beta_finite_count": 5,
+    "exported_max_probability_sum_error": 0.0,
+    "exported_probabilities_finite": true,
+    "exported_probabilities_within_unit_interval": true,
+    "exported_probability_shape_valid": true,
+    "forward_label_parity": true,
+    "forward_max_probability_difference": 8e-12,
+    "forward_parity_tolerance": 1e-06,
+    "probability_sum_tolerance": 1e-09,
+    "reference_max_probability_sum_error": 0.0,
+    "reference_probabilities_finite": true,
+    "reference_probabilities_within_unit_interval": true,
+    "reference_probability_shape_valid": true,
+    "scaler_mean_finite": true,
+    "scaler_scale_finite": true,
+    "scaler_scale_positive": true,
+    "theta_finite_count": 3,
+    "theta_strictly_increasing": true
+  },
+  "optimizer_convergence_status": "mord.LogisticAT 0.7 does not expose optimizer convergence; convergence is neither claimed nor checked.",
+  "output_sha256": {
+    "ordinal_model_json": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef"
+  },
+  "preprocessing": "sklearn.preprocessing.StandardScaler",
+  "rulebook_version": "v0.3",
+  "sample_weighting": "uniform_window",
+  "source_row_count": 114,
+  "trainer_version": "0.1.2",
+  "warning": "SYNTHETIC_PIPELINE_TEST_ONLY. This manifest records training/export mechanics only. It contains no performance metric and no pass/fail target, and is not an OSTOSENSE performance result."
+}
