@@ -1,0 +1,24 @@
+{
+  "Decision Tree": {
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": 3,
+    "min_samples_leaf": 2,
+    "preprocessing": "none",
+    "random_state": 20260909
+  },
+  "Logistic Regression": {
+    "C": 1.0,
+    "class_weight": null,
+    "max_iter": 10000,
+    "preprocessing": "StandardScaler fitted on Development only",
+    "solver": "lbfgs"
+  },
+  "OLR": {
+    "alpha": 1.0,
+    "max_iter": 10000,
+    "model_family": "mord.LogisticAT",
+    "model_sha256": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+    "preprocessing": "StandardScaler fitted on Development only"
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "status": "PASS",
+  "figure_count": 21,
+  "method": "All figures viewed with view_image; sensor panels reviewed in three contact sheets, P006 and P007 also viewed separately. Rechecked final margins after correction.",
+  "checks": [
+    "Titles and caveats readable",
+    "All axis labels visible after left-margin correction",
+    "No cropped data panels",
+    "Confusion matrix counts match verified tables",
+    "Synthetic and real evidence clearly distinguished",
+    "11 sensor sessions and five channels per session shown",
+    "All PNG figures 300 dpi"
+  ],
+  "corrections": [
+    "Expanded left margin for long sensor tick labels",
+    "Adjusted vertical space on sensor and boxplot figures",
+    "Used integer colorbar ticks for confusion matrix counts"
+  ],
+  "figures": [
+    {
+      "file": "01_perbandingan_model.png",
+      "pixels": [
+        3600,
+        1500
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "3ad439be89abab270c8ab9db094c986a5e6076038d8075a150f3c2298c19b533",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "02_f1_per_kelas.png",
+      "pixels": [
+        3000,
+        1500
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "1b5985240a8784f1d83cfa37d74240de834f2eb4278d490c131af4f4db0cc34c",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "03_confusion_1.png",
+      "pixels": [
+        2100,
+        1800
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "828d293f9ca7c65f28169b03c357c88dda0ab658ced9b3ce1bde9ba5ff810c6d",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "03_confusion_2.png",
+      "pixels": [
+        2100,
+        1800
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "1f2dd61ea2b3880fe77f8ed2762527b3f109874bc1bc7e3deeb6c594e802ec69",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "03_confusion_3.png",
+      "pixels": [
+        2100,
+        1800
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "d094098dbee9e4c9cf1a58cccc9736154eab64431b0d47315a592afffc2a47ba",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "04_optimisasi_olr.png",
+      "pixels": [
+        3600,
+        1500
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "8cce8269dfaba1f81870e87400b8c5153b45712ec48b802d3a3c1bde9221edd1",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "05_cakupan_data_nyata.png",
+      "pixels": [
+        3600,
+        1800
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "734d51ac3931b3f97d8e6d8cfe6d4bb8182ec6569dc596f16423bb490110457d",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "06_korelasi_sensor.png",
+      "pixels": [
+        2400,
+        1800
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "d6914048a80173657deedd3d3abc2320f9526c96d88f42c144d72e9d14531bfd",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "07_sebaran_sensor.png",
+      "pixels": [
+        3600,
+        3600
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "3dacbb20350e1460c0df9b3ce68f71c197e6e3d5593d6bcdd13f2bfdbc463b5f",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "08_alur_evaluasi.png",
+      "pixels": [
+        3600,
+        1500
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "318325ff90821a974c675f1704fe2371e1051ba5e920040a5fb10e68bd4fdbfc",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P001.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "4eeaaa10ebdec10cb2520ee2d870410307ae18a7e8bcae5a7c5b5942b43294e2",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P002.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "e60a2a059e3e9108f59a49bd6ab5000737c551cd15baa236c33caef6ce1567fd",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P003.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "be7cfde820185d9b6c8347723693fe42556737c451dd5e6e029c50f350bc70cd",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P004-1.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "26eb8a92c1dc898832dce39621d69811a8fa7a5b7ca8e2d52fbde70ab721717e",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P004-2.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "5bfa50d0a804a44b5526c978da1dd137f6c3e1b286e88fddde588ef4a921e333",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P004-3.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "a3ac55ab95289f52bc2c01112ac3402ee2d06004e4a63408b2ac53343ea7a693",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P005-1.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "0e8e9e40bc41d90360b5511d3c21bb630c75088a514beb0efe90b1c8fc80f5ce",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P005-2.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "9bede93e1e39b336d575ba44409e85d5c42777d27345535c23e8c84f990c3b2f",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P005-3.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "9f760bb5da77a964656b8040827ad83ed4f1a60ea70c9bafc2e9c7f1343c3c42",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P006.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "9e6b419d642fcc06b81b27c4eba0fb51502a2c12b49c76ec6854db5912d78e17",
+      "visual_status": "PASS"
+    },
+    {
+      "file": "sensor_P007.png",
+      "pixels": [
+        3300,
+        3000
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "8050048019828adb10f48bca82a570aa753259420e38be0df0b189ea2dc1312b",
+      "visual_status": "PASS"
+    }
+  ]
+}

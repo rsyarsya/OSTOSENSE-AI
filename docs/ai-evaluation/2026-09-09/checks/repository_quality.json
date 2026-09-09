@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "command": "./scripts/verify.sh",
+  "exit_code": 0,
+  "python_tests": 317,
+  "skipped_tests": 0,
+  "python_test_seconds": 21.847,
+  "ruff": "PASS",
+  "pyright": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "build_and_clean_wheel": "PASS",
+  "portable_cpp17_tests": [
+    "data_contract",
+    "ordinal_inference",
+    "capacitive_features"
+  ],
+  "repository_hygiene": "PASS",
+  "summary": "317 tes Python lulus (0 skip), Ruff lulus, Pyright 0 error/0 warning, build dan clean-wheel import lulus, 3 tes C++17 lulus, repository hygiene lulus",
+  "repo_status_before_and_after": "?? tes\n",
+  "sandbox_attempt": {
+    "exit_code": 124,
+    "reason": "Timeout after 90 seconds during live-service test; full rerun outside sandbox passed",
+    "log": "logs/repository-quality.log"
+  },
+  "build_notes": [
+    "byte-compiling disabled by PYTHONDONTWRITEBYTECODE; two build warnings recorded, build successful"
+  ]
+}

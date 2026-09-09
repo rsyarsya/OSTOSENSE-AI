@@ -5,6 +5,11 @@ Untuk integrasi software terbaru, mulai dari
 [MUST FIX Tim Software, 8 September 2026](./software-must-fix-2026-09-08.md).
 Model tersedia sebagai aset paket; deployment software/hardware tetap terpisah.
 
+Untuk hasil evaluasi terbaru, lihat
+[Evaluasi AI, 9 September 2026](./ai-evaluation/2026-09-09/README.md):
+perbandingan tiga model pada fixture sintetis dan karakterisasi 11 sesi sensor nyata.
+Metrik sintetis tersebut bukan akurasi risiko pada data nyata.
+
 Dokumentasi fondasi AI disusun dalam dua lapisan:
 
 1. [Fondasi Arsitektur AI OSTOSENSE](./ostosense-ai-foundation.md)

@@ -1,0 +1,34 @@
+{
+  "bag_id": {
+    "development": [
+      "synthetic-bag-leak-a",
+      "synthetic-bag-safe-a"
+    ],
+    "validation": [
+      "synthetic-bag-validation-leak-a",
+      "synthetic-bag-validation-safe-a"
+    ]
+  },
+  "sensor_id": {
+    "development": [
+      "synthetic-sensor-leak-a",
+      "synthetic-sensor-safe-a"
+    ],
+    "validation": [
+      "synthetic-sensor-validation-leak-a",
+      "synthetic-sensor-validation-safe-a"
+    ]
+  },
+  "session_id": {
+    "development": [
+      "syn-gradual-flag-first-001",
+      "syn-gradual-observed-first-001",
+      "syn-safe-001",
+      "syn-safe-002"
+    ],
+    "validation": [
+      "syn-gradual-validation-001",
+      "syn-safe-validation-001"
+    ]
+  }
+}

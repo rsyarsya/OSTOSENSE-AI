@@ -1,0 +1,315 @@
+[1/6] Python tests
+.........................................................................................................Executing <Task finished name='Task-1' coro=<ServiceTests.asyncSetUp() done, defined at ./ai/tests/test_live_service.py:194> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.438 seconds
+....................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 317 tests in 21.847s
+
+OK
+AI runtime output: model_status=UNVALIDATED, prediction_available=true to /tmp/tmpmfwznbhl/runtime.json
+UNVALIDATED experimental class from a synthetic-trained model applied to real Kap_7 sensor features; not for patient notification or clinical action.
+AI runtime output: model_status=TEST_ONLY, prediction_available=true to /tmp/tmpxhf8ln6u/runtime.json
+ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output.
+AI runtime output: model_status=UNAVAILABLE, prediction_available=false to /tmp/tmpurkqthby/runtime.json
+No approved real-data model is available; no OSTOSENSE risk class was produced.
+AI runtime output: model_status=UNAVAILABLE, prediction_available=false to /tmp/tmpdc7vni6l/runtime-v2.json
+No usable AI prediction is available; no OSTOSENSE risk class was produced.
+[2/6] Ruff correctness gate
+All checks passed!
+[3/6] Pyright
+0 errors, 0 warnings, 0 informations
+[4/6] Python package build and clean-wheel import
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=68
+* Getting build dependencies for sdist...
+running egg_info
+writing src/ostosense_contract.egg-info/PKG-INFO
+writing dependency_links to src/ostosense_contract.egg-info/dependency_links.txt
+writing requirements to src/ostosense_contract.egg-info/requires.txt
+writing top-level names to src/ostosense_contract.egg-info/top_level.txt
+reading manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.0.0
+* Building sdist...
+running sdist
+running egg_info
+writing src/ostosense_contract.egg-info/PKG-INFO
+writing dependency_links to src/ostosense_contract.egg-info/dependency_links.txt
+writing requirements to src/ostosense_contract.egg-info/requires.txt
+writing top-level names to src/ostosense_contract.egg-info/top_level.txt
+reading manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+running check
+creating ostosense_contract-0.2.0
+creating ostosense_contract-0.2.0/src/ostosense_ai
+creating ostosense_contract-0.2.0/src/ostosense_ai/model_assets/engineering_v03
+creating ostosense_contract-0.2.0/src/ostosense_contract
+creating ostosense_contract-0.2.0/src/ostosense_contract.egg-info
+creating ostosense_contract-0.2.0/tests
+copying files to ostosense_contract-0.2.0...
+copying MANIFEST.in -> ostosense_contract-0.2.0
+copying README.md -> ostosense_contract-0.2.0
+copying pyproject.toml -> ostosense_contract-0.2.0
+copying requirements-serve.lock -> ostosense_contract-0.2.0
+copying src/ostosense_ai/__init__.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/bundled_model.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/edge_export.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/evaluation.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/features.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/inference.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/integration_cli.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/labeling.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/live_window.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/matrix.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/model_evaluation.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/pilot_data.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/pilot_reporting.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/raw_qc.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/runtime_output.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/service.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/synthetic.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/training.py -> ostosense_contract-0.2.0/src/ostosense_ai
+copying src/ostosense_ai/model_assets/engineering_v03/MODEL_CARD.md -> ostosense_contract-0.2.0/src/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/bundle.json -> ostosense_contract-0.2.0/src/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/examples.json -> ostosense_contract-0.2.0/src/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/ordinal_model.json -> ostosense_contract-0.2.0/src/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/training_manifest.json -> ostosense_contract-0.2.0/src/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_contract/__init__.py -> ostosense_contract-0.2.0/src/ostosense_contract
+copying src/ostosense_contract/logger.py -> ostosense_contract-0.2.0/src/ostosense_contract
+copying src/ostosense_contract/schema.py -> ostosense_contract-0.2.0/src/ostosense_contract
+copying src/ostosense_contract.egg-info/PKG-INFO -> ostosense_contract-0.2.0/src/ostosense_contract.egg-info
+copying src/ostosense_contract.egg-info/SOURCES.txt -> ostosense_contract-0.2.0/src/ostosense_contract.egg-info
+copying src/ostosense_contract.egg-info/dependency_links.txt -> ostosense_contract-0.2.0/src/ostosense_contract.egg-info
+copying src/ostosense_contract.egg-info/requires.txt -> ostosense_contract-0.2.0/src/ostosense_contract.egg-info
+copying src/ostosense_contract.egg-info/top_level.txt -> ostosense_contract-0.2.0/src/ostosense_contract.egg-info
+copying tests/test_capacitive_features.py -> ostosense_contract-0.2.0/tests
+copying tests/test_contract.py -> ostosense_contract-0.2.0/tests
+copying tests/test_edge_export.py -> ostosense_contract-0.2.0/tests
+copying tests/test_evaluation.py -> ostosense_contract-0.2.0/tests
+copying tests/test_features.py -> ostosense_contract-0.2.0/tests
+copying tests/test_inference.py -> ostosense_contract-0.2.0/tests
+copying tests/test_labeling.py -> ostosense_contract-0.2.0/tests
+copying tests/test_live_service.py -> ostosense_contract-0.2.0/tests
+copying tests/test_matrix.py -> ostosense_contract-0.2.0/tests
+copying tests/test_model_evaluation.py -> ostosense_contract-0.2.0/tests
+copying tests/test_ostosense_ai_skeleton.py -> ostosense_contract-0.2.0/tests
+copying tests/test_pilot_data.py -> ostosense_contract-0.2.0/tests
+copying tests/test_pilot_reporting.py -> ostosense_contract-0.2.0/tests
+copying tests/test_pipeline_compatibility.py -> ostosense_contract-0.2.0/tests
+copying tests/test_raw_qc.py -> ostosense_contract-0.2.0/tests
+copying tests/test_real_pilot_inventory.py -> ostosense_contract-0.2.0/tests
+copying tests/test_repository_quality.py -> ostosense_contract-0.2.0/tests
+copying tests/test_runtime_output.py -> ostosense_contract-0.2.0/tests
+copying tests/test_runtime_schema.py -> ostosense_contract-0.2.0/tests
+copying tests/test_service_contract.py -> ostosense_contract-0.2.0/tests
+copying tests/test_service_process.py -> ostosense_contract-0.2.0/tests
+copying tests/test_synthetic.py -> ostosense_contract-0.2.0/tests
+copying tests/test_training.py -> ostosense_contract-0.2.0/tests
+Writing ostosense_contract-0.2.0/setup.cfg
+Creating tar archive
+removing 'ostosense_contract-0.2.0' (and everything under it)
+* Building wheel from sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=68
+* Getting build dependencies for wheel...
+running egg_info
+writing src/ostosense_contract.egg-info/PKG-INFO
+writing dependency_links to src/ostosense_contract.egg-info/dependency_links.txt
+writing requirements to src/ostosense_contract.egg-info/requires.txt
+writing top-level names to src/ostosense_contract.egg-info/top_level.txt
+reading manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.0.0
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/ostosense_contract
+copying src/ostosense_contract/__init__.py -> build/lib/ostosense_contract
+copying src/ostosense_contract/logger.py -> build/lib/ostosense_contract
+copying src/ostosense_contract/schema.py -> build/lib/ostosense_contract
+creating build/lib/ostosense_ai
+copying src/ostosense_ai/features.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/pilot_data.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/edge_export.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/training.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/runtime_output.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/service.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/live_window.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/integration_cli.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/evaluation.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/__init__.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/pilot_reporting.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/bundled_model.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/synthetic.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/inference.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/labeling.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/matrix.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/raw_qc.py -> build/lib/ostosense_ai
+copying src/ostosense_ai/model_evaluation.py -> build/lib/ostosense_ai
+running egg_info
+writing src/ostosense_contract.egg-info/PKG-INFO
+writing dependency_links to src/ostosense_contract.egg-info/dependency_links.txt
+writing requirements to src/ostosense_contract.egg-info/requires.txt
+writing top-level names to src/ostosense_contract.egg-info/top_level.txt
+reading manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src/ostosense_contract.egg-info/SOURCES.txt'
+creating build/lib/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/ordinal_model.json -> build/lib/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/examples.json -> build/lib/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/training_manifest.json -> build/lib/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/bundle.json -> build/lib/ostosense_ai/model_assets/engineering_v03
+copying src/ostosense_ai/model_assets/engineering_v03/MODEL_CARD.md -> build/lib/ostosense_ai/model_assets/engineering_v03
+warning: build_py: byte-compiling is disabled, skipping.
+
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/ostosense_contract
+copying build/lib/ostosense_contract/__init__.py -> build/bdist.linux-x86_64/wheel/./ostosense_contract
+copying build/lib/ostosense_contract/logger.py -> build/bdist.linux-x86_64/wheel/./ostosense_contract
+copying build/lib/ostosense_contract/schema.py -> build/bdist.linux-x86_64/wheel/./ostosense_contract
+creating build/bdist.linux-x86_64/wheel/ostosense_ai
+copying build/lib/ostosense_ai/features.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/pilot_data.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/edge_export.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/training.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+creating build/bdist.linux-x86_64/wheel/ostosense_ai/model_assets
+creating build/bdist.linux-x86_64/wheel/ostosense_ai/model_assets/engineering_v03
+copying build/lib/ostosense_ai/model_assets/engineering_v03/ordinal_model.json -> build/bdist.linux-x86_64/wheel/./ostosense_ai/model_assets/engineering_v03
+copying build/lib/ostosense_ai/model_assets/engineering_v03/MODEL_CARD.md -> build/bdist.linux-x86_64/wheel/./ostosense_ai/model_assets/engineering_v03
+copying build/lib/ostosense_ai/model_assets/engineering_v03/examples.json -> build/bdist.linux-x86_64/wheel/./ostosense_ai/model_assets/engineering_v03
+copying build/lib/ostosense_ai/model_assets/engineering_v03/training_manifest.json -> build/bdist.linux-x86_64/wheel/./ostosense_ai/model_assets/engineering_v03
+copying build/lib/ostosense_ai/model_assets/engineering_v03/bundle.json -> build/bdist.linux-x86_64/wheel/./ostosense_ai/model_assets/engineering_v03
+copying build/lib/ostosense_ai/runtime_output.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/service.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/live_window.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/integration_cli.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/evaluation.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/__init__.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/pilot_reporting.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/bundled_model.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/synthetic.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/inference.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/labeling.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/matrix.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/raw_qc.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+copying build/lib/ostosense_ai/model_evaluation.py -> build/bdist.linux-x86_64/wheel/./ostosense_ai
+warning: install_lib: byte-compiling is disabled, skipping.
+
+running install_egg_info
+Copying src/ostosense_contract.egg-info to build/bdist.linux-x86_64/wheel/./ostosense_contract-0.2.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/ostosense_contract-0.2.0.dist-info/WHEEL
+creating '/tmp/tmp.OtlsTS8ZI7/dist/.tmp-1id_g80v/ostosense_contract-0.2.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'ostosense_ai/__init__.py'
+adding 'ostosense_ai/bundled_model.py'
+adding 'ostosense_ai/edge_export.py'
+adding 'ostosense_ai/evaluation.py'
+adding 'ostosense_ai/features.py'
+adding 'ostosense_ai/inference.py'
+adding 'ostosense_ai/integration_cli.py'
+adding 'ostosense_ai/labeling.py'
+adding 'ostosense_ai/live_window.py'
+adding 'ostosense_ai/matrix.py'
+adding 'ostosense_ai/model_evaluation.py'
+adding 'ostosense_ai/pilot_data.py'
+adding 'ostosense_ai/pilot_reporting.py'
+adding 'ostosense_ai/raw_qc.py'
+adding 'ostosense_ai/runtime_output.py'
+adding 'ostosense_ai/service.py'
+adding 'ostosense_ai/synthetic.py'
+adding 'ostosense_ai/training.py'
+adding 'ostosense_ai/model_assets/engineering_v03/MODEL_CARD.md'
+adding 'ostosense_ai/model_assets/engineering_v03/bundle.json'
+adding 'ostosense_ai/model_assets/engineering_v03/examples.json'
+adding 'ostosense_ai/model_assets/engineering_v03/ordinal_model.json'
+adding 'ostosense_ai/model_assets/engineering_v03/training_manifest.json'
+adding 'ostosense_contract/__init__.py'
+adding 'ostosense_contract/logger.py'
+adding 'ostosense_contract/schema.py'
+adding 'ostosense_contract-0.2.0.dist-info/METADATA'
+adding 'ostosense_contract-0.2.0.dist-info/WHEEL'
+adding 'ostosense_contract-0.2.0.dist-info/top_level.txt'
+adding 'ostosense_contract-0.2.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built ostosense_contract-0.2.0.tar.gz and ostosense_contract-0.2.0-py3-none-any.whl
+{
+  "model_id": "engineering-v0.3",
+  "model_sha256": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+  "examples": [
+    {
+      "data_source": "SYNTHETIC_FIXTURE",
+      "evidence_scope": "PIPELINE_MECHANICS_ONLY",
+      "mode": "ENGINEERING_TEST",
+      "model_artifact_sha256": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+      "model_artifact_version": "0.1.0",
+      "model_input_channel": "SYNTHETIC_CAPACITIVE",
+      "model_status": "TEST_ONLY",
+      "prediction_available": true,
+      "risk_class": "Safe",
+      "risk_class_index": 0,
+      "runtime_output_version": "0.2.0",
+      "source_window_end_ms": 130000,
+      "warning": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."
+    },
+    {
+      "data_source": "SYNTHETIC_FIXTURE",
+      "evidence_scope": "PIPELINE_MECHANICS_ONLY",
+      "mode": "ENGINEERING_TEST",
+      "model_artifact_sha256": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+      "model_artifact_version": "0.1.0",
+      "model_input_channel": "SYNTHETIC_CAPACITIVE",
+      "model_status": "TEST_ONLY",
+      "prediction_available": true,
+      "risk_class": "Monitor",
+      "risk_class_index": 1,
+      "runtime_output_version": "0.2.0",
+      "source_window_end_ms": 190000,
+      "warning": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."
+    },
+    {
+      "data_source": "SYNTHETIC_FIXTURE",
+      "evidence_scope": "PIPELINE_MECHANICS_ONLY",
+      "mode": "ENGINEERING_TEST",
+      "model_artifact_sha256": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+      "model_artifact_version": "0.1.0",
+      "model_input_channel": "SYNTHETIC_CAPACITIVE",
+      "model_status": "TEST_ONLY",
+      "prediction_available": true,
+      "risk_class": "Caution",
+      "risk_class_index": 2,
+      "runtime_output_version": "0.2.0",
+      "source_window_end_ms": 250000,
+      "warning": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."
+    },
+    {
+      "data_source": "SYNTHETIC_FIXTURE",
+      "evidence_scope": "PIPELINE_MECHANICS_ONLY",
+      "mode": "ENGINEERING_TEST",
+      "model_artifact_sha256": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+      "model_artifact_version": "0.1.0",
+      "model_input_channel": "SYNTHETIC_CAPACITIVE",
+      "model_status": "TEST_ONLY",
+      "prediction_available": true,
+      "risk_class": "Urgent",
+      "risk_class_index": 3,
+      "runtime_output_version": "0.2.0",
+      "source_window_end_ms": 310000,
+      "warning": "ENGINEERING_TEST_ONLY synthetic result; not a patient-risk assessment or clinical output."
+    }
+  ]
+}
+[5/6] Portable C++17 tests
+ordinal_inference_test: all checks passed
+capacitive_features_test: all checks passed
+[6/6] Repository hygiene
+Semua quality gates lulus.

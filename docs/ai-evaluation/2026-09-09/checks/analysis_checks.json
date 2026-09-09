@@ -1,0 +1,14 @@
+{
+  "all_11_real_sessions_retained": true,
+  "bundled_model_sha_match": true,
+  "canonical_olr_validation_match": true,
+  "identical_evaluation_rows": true,
+  "manual_metric_recalculation": true,
+  "no_final_test_used": true,
+  "no_group_overlap": true,
+  "raw_not_used_for_classifier_fitting": true,
+  "real_classification_metrics": "NOT_EVALUABLE_NO_GROUND_TRUTH",
+  "real_counts_reconciled": true,
+  "repeat_comparator_predictions_equal": true,
+  "source_hashes_match": true
+}

@@ -1,0 +1,149 @@
+[
+  {
+    "caveat": "Evaluasi sintetis — mekanik pipeline. Partisi tetap; tidak mengukur akurasi data nyata.",
+    "chart_type": "grouped_bar",
+    "file": "01_perbandingan_model.png",
+    "question": "Perbandingan tiga model pada data sintetis",
+    "source": "tables/model_metrics.csv"
+  },
+  {
+    "caveat": "38 window; support Safe/Monitor/Caution/Urgent = [21, 8, 6, 3]. Evaluasi sintetis — mekanik pipeline.",
+    "chart_type": "grouped_bar",
+    "file": "02_f1_per_kelas.png",
+    "question": "F1 per kelas pada validation sintetis",
+    "source": "tables/per_class_metrics.csv"
+  },
+  {
+    "caveat": "Validation sintetis: 38 window, 2 sesi. Accuracy = 94.74%.\nEvaluasi sintetis — mekanik pipeline; bukan hasil data nyata.",
+    "chart_type": "heatmap",
+    "file": "03_confusion_1.png",
+    "question": "Confusion matrix — OLR",
+    "source": "tables/confusion_matrices.csv"
+  },
+  {
+    "caveat": "Validation sintetis: 38 window, 2 sesi. Accuracy = 94.74%.\nEvaluasi sintetis — mekanik pipeline; bukan hasil data nyata.",
+    "chart_type": "heatmap",
+    "file": "03_confusion_2.png",
+    "question": "Confusion matrix — Logistic Regression",
+    "source": "tables/confusion_matrices.csv"
+  },
+  {
+    "caveat": "Validation sintetis: 38 window, 2 sesi. Accuracy = 97.37%.\nEvaluasi sintetis — mekanik pipeline; bukan hasil data nyata.",
+    "chart_type": "heatmap",
+    "file": "03_confusion_3.png",
+    "question": "Confusion matrix — Decision Tree",
+    "source": "tables/confusion_matrices.csv"
+  },
+  {
+    "caveat": "Development 76 window; validation 38 window. Paritas optimizer diperiksa.\nKurva ini bukan bukti bebas overfitting atau akurasi sensor nyata.",
+    "chart_type": "line",
+    "file": "04_optimisasi_olr.png",
+    "question": "Jejak optimisasi OLR pada data sintetis",
+    "source": "tables/optimization_trace.csv"
+  },
+  {
+    "caveat": "21.887 sampel; 94 window tanpa label. P006 (oranye) tetap ditampilkan sebagai sesi gangguan sensor.",
+    "chart_type": "horizontal_bar",
+    "file": "05_cakupan_data_nyata.png",
+    "question": "Cakupan 11 sesi sensor nyata",
+    "source": "tables/real_sessions.csv"
+  },
+  {
+    "caveat": "Median korelasi dalam 10 sesi operasional, bobot sesi setara; P006 dikecualikan hanya dari korelasi.\nData nyata tanpa label; korelasi tidak membuktikan akurasi, sebab-akibat, atau kelayakan sensor.",
+    "chart_type": "heatmap",
+    "file": "06_korelasi_sensor.png",
+    "question": "Korelasi deskriptif lima kanal sensor",
+    "source": "tables/sensor_correlation_median.csv"
+  },
+  {
+    "caveat": "Skenario: kering_diam; 2,985 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P001.png",
+    "question": "Respons sensor P001",
+    "source": "raw source hash in tables/source_inventory.csv: P001"
+  },
+  {
+    "caveat": "Skenario: kering_dengan_gerakan; 2,717 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P002.png",
+    "question": "Respons sensor P002",
+    "source": "raw source hash in tables/source_inventory.csv: P002"
+  },
+  {
+    "caveat": "Skenario: pengisian_kantong_bertahap; 3,312 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P003.png",
+    "question": "Respons sensor P003",
+    "source": "raw source hash in tables/source_inventory.csv: P003"
+  },
+  {
+    "caveat": "Skenario: kebocoran_bertahap; 1,537 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P004-1.png",
+    "question": "Respons sensor P004-1",
+    "source": "raw source hash in tables/source_inventory.csv: P004-1"
+  },
+  {
+    "caveat": "Skenario: kebocoran_bertahap; 1,267 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P004-2.png",
+    "question": "Respons sensor P004-2",
+    "source": "raw source hash in tables/source_inventory.csv: P004-2"
+  },
+  {
+    "caveat": "Skenario: kebocoran_bertahap; 1,527 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P004-3.png",
+    "question": "Respons sensor P004-3",
+    "source": "raw source hash in tables/source_inventory.csv: P004-3"
+  },
+  {
+    "caveat": "Skenario: kebocoran_mendadak; 1,831 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P005-1.png",
+    "question": "Respons sensor P005-1",
+    "source": "raw source hash in tables/source_inventory.csv: P005-1"
+  },
+  {
+    "caveat": "Skenario: kebocoran_mendadak; 1,510 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P005-2.png",
+    "question": "Respons sensor P005-2",
+    "source": "raw source hash in tables/source_inventory.csv: P005-2"
+  },
+  {
+    "caveat": "Skenario: kebocoran_mendadak; 1,675 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P005-3.png",
+    "question": "Respons sensor P005-3",
+    "source": "raw source hash in tables/source_inventory.csv: P005-3"
+  },
+  {
+    "caveat": "Skenario: uji_gangguan_sensor; 1,126 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P006.png",
+    "question": "Respons sensor P006 — gangguan sensor",
+    "source": "raw source hash in tables/source_inventory.csv: P006"
+  },
+  {
+    "caveat": "Skenario: kantong_diisi_sampai_penuh; 2,400 sampel. Lima kanal raw; tanpa penggantian outlier.\nNama skenario adalah metadata sesi, bukan label risiko tiap window.",
+    "chart_type": "time_series_small_multiples",
+    "file": "sensor_P007.png",
+    "question": "Respons sensor P007",
+    "source": "raw source hash in tables/source_inventory.csv: P007"
+  },
+  {
+    "caveat": "Box: kuartil 25–75%; garis: median; whisker: 1,5 IQR. Titik luar whisker tetap disertakan.\nVariasi mencakup respons eksperimen dan gangguan; tidak otomatis diartikan sebagai noise.",
+    "chart_type": "boxplot",
+    "file": "07_sebaran_sensor.png",
+    "question": "Sebaran pembacaan raw per sesi dan kanal",
+    "source": "tables/real_channel_statistics.csv"
+  },
+  {
+    "caveat": "Dua sumber bukti dilaporkan terpisah. Model aplikasi tetap OLR; pembanding hanya untuk analisis sintetis.",
+    "chart_type": "flow_diagram",
+    "file": "08_alur_evaluasi.png",
+    "question": "Alur evaluasi AI dan karakterisasi sensor",
+    "source": "analysis.json"
+  }
+]

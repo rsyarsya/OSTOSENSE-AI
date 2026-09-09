@@ -1,0 +1,12 @@
+session_id,scenario,n_raw,first_time_s,last_time_s,elapsed_span_s,interval_min_ms,interval_max_ms,complete_1hz_bins,partial_raw_samples,windows,qc_status,correlation_included,label_status
+P001,kering_diam,2985,0.1,298.5,298.4,100,100,298,5,18,STRUCTURAL_PASS,true,UNLABELED
+P002,kering_dengan_gerakan,2717,0.1,271.7,271.59999999999997,100,100,271,7,16,STRUCTURAL_PASS,true,UNLABELED
+P003,pengisian_kantong_bertahap,3312,0.1,331.2,331.09999999999997,100,100,331,2,22,STRUCTURAL_PASS,true,UNLABELED
+P004-1,kebocoran_bertahap,1537,0.1,153.7,153.6,100,100,153,7,4,STRUCTURAL_PASS,true,UNLABELED
+P004-2,kebocoran_bertahap,1267,0.1,126.7,126.60000000000001,100,100,126,7,1,STRUCTURAL_PASS,true,UNLABELED
+P004-3,kebocoran_bertahap,1527,0.1,152.7,152.6,100,100,152,7,4,STRUCTURAL_PASS,true,UNLABELED
+P005-1,kebocoran_mendadak,1831,0.1,183.1,183.0,100,100,183,1,7,STRUCTURAL_PASS,true,UNLABELED
+P005-2,kebocoran_mendadak,1510,0.1,151.0,150.9,100,100,151,0,4,STRUCTURAL_PASS,true,UNLABELED
+P005-3,kebocoran_mendadak,1675,0.1,167.5,167.4,100,100,167,5,5,STRUCTURAL_PASS,true,UNLABELED
+P006,uji_gangguan_sensor,1126,0.1,112.6,112.5,100,100,112,6,0,STRUCTURAL_PASS,false,UNLABELED
+P007,kantong_diisi_sampai_penuh,2400,0.0,239.9,239.9,100,100,240,0,13,STRUCTURAL_PASS,true,UNLABELED

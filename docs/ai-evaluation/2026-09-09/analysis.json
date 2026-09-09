@@ -1,0 +1,1009 @@
+{
+  "fit_warnings": [],
+  "grouping": {
+    "bag_id": {
+      "development": [
+        "synthetic-bag-leak-a",
+        "synthetic-bag-safe-a"
+      ],
+      "validation": [
+        "synthetic-bag-validation-leak-a",
+        "synthetic-bag-validation-safe-a"
+      ]
+    },
+    "sensor_id": {
+      "development": [
+        "synthetic-sensor-leak-a",
+        "synthetic-sensor-safe-a"
+      ],
+      "validation": [
+        "synthetic-sensor-validation-leak-a",
+        "synthetic-sensor-validation-safe-a"
+      ]
+    },
+    "session_id": {
+      "development": [
+        "syn-gradual-flag-first-001",
+        "syn-gradual-observed-first-001",
+        "syn-safe-001",
+        "syn-safe-002"
+      ],
+      "validation": [
+        "syn-gradual-validation-001",
+        "syn-safe-validation-001"
+      ]
+    }
+  },
+  "matrix_manifest": {
+    "audit_columns": [
+      "window_id",
+      "session_id",
+      "bag_id",
+      "sensor_id",
+      "dataset_partition"
+    ],
+    "class_counts": {
+      "Caution": 18,
+      "Monitor": 24,
+      "Safe": 63,
+      "Urgent": 9
+    },
+    "class_counts_by_partition": {
+      "development": {
+        "Caution": 12,
+        "Monitor": 16,
+        "Safe": 42,
+        "Urgent": 6
+      },
+      "validation": {
+        "Caution": 6,
+        "Monitor": 8,
+        "Safe": 21,
+        "Urgent": 3
+      }
+    },
+    "class_mapping": {
+      "Caution": 2,
+      "Monitor": 1,
+      "Safe": 0,
+      "Urgent": 3
+    },
+    "class_order": [
+      "Safe",
+      "Monitor",
+      "Caution",
+      "Urgent"
+    ],
+    "data_contract_version": "v1.1",
+    "dataset_origin": "SYNTHETIC_PIPELINE_TEST_ONLY",
+    "eligible_row_count": 114,
+    "excluded_row_count": 96,
+    "exclusion_counts": {
+      "CENSORED_NO_SAFE_HORIZON": 11,
+      "DUPLICATE_TIMESTAMP": 0,
+      "FIELD_ARM_EXCLUDED": 0,
+      "INVALID_CAP_QUALITY": 32,
+      "PARTIAL_WINDOW": 12,
+      "POST_LEAK": 24,
+      "SUDDEN_ARM": 17,
+      "TIMING_OUT_OF_TOLERANCE": 0
+    },
+    "feature_columns": [
+      "cap_delta_mean",
+      "cap_delta_last",
+      "cap_delta_slope_per_s",
+      "cap_delta_variance",
+      "cap_delta_range"
+    ],
+    "feature_input_sha256": {
+      "feature_manifest": "4d4ba2b4896bd23e43a02dfa6d89770c5e59b8c9cacf5a4da1924ff7e56d58b6",
+      "features_csv": "e7b88c7f671d8d72164bb2d9732c0c30cdf783effdb89586221a88279557db6b"
+    },
+    "grouping_columns": [
+      "session_id",
+      "bag_id",
+      "sensor_id"
+    ],
+    "label_input_sha256": {
+      "label_manifest": "78c2f66f2d91d255744d5a91b774af5fe120995d71ab2bd3ba5d749484ebe06d",
+      "labels_csv": "fc4cc07fb2ef89f7782c5a135c7055e55b088bd248847db37a237b8ff2407891"
+    },
+    "matrix_builder_version": "0.1.2",
+    "model_matrix_sha256": "02d14c773b0a16b11aa213761f88c67580d177868ed08c04eb66b6556ffe979e",
+    "partition_column": "dataset_partition",
+    "partition_row_counts": {
+      "development": 76,
+      "validation": 38
+    },
+    "partition_values": [
+      "development",
+      "validation"
+    ],
+    "rulebook_version": "v0.3",
+    "source_candidate_window_count": 210,
+    "source_partition_window_counts": {
+      "development": 162,
+      "validation": 48
+    },
+    "target_column": "risk_label_index",
+    "target_label_column": "risk_label",
+    "warning": "SYNTHETIC_PIPELINE_TEST_ONLY matrix-construction mechanics only. This feature-label matrix is not a model, not a metric, and not an OSTOSENSE performance, notification-accuracy, sensor, or clinical result.",
+    "window_convention": {
+      "expected_full_samples": 120,
+      "interval": "(t-W,t]",
+      "jitter_tolerance_ms": 200,
+      "sampling_rate_hz": 1,
+      "stride_seconds": 10,
+      "window_seconds": 120
+    }
+  },
+  "model_metrics": {
+    "Decision Tree": {
+      "development": {
+        "accuracy": 0.9736842105263158,
+        "class_order": [
+          {
+            "index": 0,
+            "name": "Safe"
+          },
+          {
+            "index": 1,
+            "name": "Monitor"
+          },
+          {
+            "index": 2,
+            "name": "Caution"
+          },
+          {
+            "index": 3,
+            "name": "Urgent"
+          }
+        ],
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            14,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            6
+          ]
+        ],
+        "confusion_matrix_orientation": "rows=ground_truth, columns=predicted",
+        "evaluation_scope": "pipeline-mechanics evaluation of metric implementation only",
+        "macro_f1": 0.9775193798449613,
+        "per_class": [
+          {
+            "class_index": 0,
+            "class_name": "Safe",
+            "f1": 0.9767441860465116,
+            "precision": 0.9545454545454546,
+            "recall": 1.0,
+            "support": 42
+          },
+          {
+            "class_index": 1,
+            "class_name": "Monitor",
+            "f1": 0.9333333333333333,
+            "precision": 1.0,
+            "recall": 0.875,
+            "support": 16
+          },
+          {
+            "class_index": 2,
+            "class_name": "Caution",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 12
+          },
+          {
+            "class_index": 3,
+            "class_name": "Urgent",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          }
+        ],
+        "quadratic_weighted_kappa": 0.9865343727852587,
+        "sample_count": 76,
+        "warning": "This result is not an OSTOSENSE performance claim unless the predictions come from the approved real-data evaluation protocol; it validates metric mechanics only."
+      },
+      "validation": {
+        "accuracy": 0.9736842105263158,
+        "class_order": [
+          {
+            "index": 0,
+            "name": "Safe"
+          },
+          {
+            "index": 1,
+            "name": "Monitor"
+          },
+          {
+            "index": 2,
+            "name": "Caution"
+          },
+          {
+            "index": 3,
+            "name": "Urgent"
+          }
+        ],
+        "confusion_matrix": [
+          [
+            21,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3
+          ]
+        ],
+        "confusion_matrix_orientation": "rows=ground_truth, columns=predicted",
+        "evaluation_scope": "pipeline-mechanics evaluation of metric implementation only",
+        "macro_f1": 0.9775193798449613,
+        "per_class": [
+          {
+            "class_index": 0,
+            "class_name": "Safe",
+            "f1": 0.9767441860465116,
+            "precision": 0.9545454545454546,
+            "recall": 1.0,
+            "support": 21
+          },
+          {
+            "class_index": 1,
+            "class_name": "Monitor",
+            "f1": 0.9333333333333333,
+            "precision": 1.0,
+            "recall": 0.875,
+            "support": 8
+          },
+          {
+            "class_index": 2,
+            "class_name": "Caution",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          },
+          {
+            "class_index": 3,
+            "class_name": "Urgent",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3
+          }
+        ],
+        "quadratic_weighted_kappa": 0.9865343727852587,
+        "sample_count": 38,
+        "warning": "This result is not an OSTOSENSE performance claim unless the predictions come from the approved real-data evaluation protocol; it validates metric mechanics only."
+      }
+    },
+    "Logistic Regression": {
+      "development": {
+        "accuracy": 0.9210526315789473,
+        "class_order": [
+          {
+            "index": 0,
+            "name": "Safe"
+          },
+          {
+            "index": 1,
+            "name": "Monitor"
+          },
+          {
+            "index": 2,
+            "name": "Caution"
+          },
+          {
+            "index": 3,
+            "name": "Urgent"
+          }
+        ],
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            10,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            6
+          ]
+        ],
+        "confusion_matrix_orientation": "rows=ground_truth, columns=predicted",
+        "evaluation_scope": "pipeline-mechanics evaluation of metric implementation only",
+        "macro_f1": 0.9256410256410257,
+        "per_class": [
+          {
+            "class_index": 0,
+            "class_name": "Safe",
+            "f1": 0.9333333333333333,
+            "precision": 0.875,
+            "recall": 1.0,
+            "support": 42
+          },
+          {
+            "class_index": 1,
+            "class_name": "Monitor",
+            "f1": 0.7692307692307693,
+            "precision": 1.0,
+            "recall": 0.625,
+            "support": 16
+          },
+          {
+            "class_index": 2,
+            "class_name": "Caution",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 12
+          },
+          {
+            "class_index": 3,
+            "class_name": "Urgent",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          }
+        ],
+        "quadratic_weighted_kappa": 0.960167714884696,
+        "sample_count": 76,
+        "warning": "This result is not an OSTOSENSE performance claim unless the predictions come from the approved real-data evaluation protocol; it validates metric mechanics only."
+      },
+      "validation": {
+        "accuracy": 0.9473684210526315,
+        "class_order": [
+          {
+            "index": 0,
+            "name": "Safe"
+          },
+          {
+            "index": 1,
+            "name": "Monitor"
+          },
+          {
+            "index": 2,
+            "name": "Caution"
+          },
+          {
+            "index": 3,
+            "name": "Urgent"
+          }
+        ],
+        "confusion_matrix": [
+          [
+            21,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3
+          ]
+        ],
+        "confusion_matrix_orientation": "rows=ground_truth, columns=predicted",
+        "evaluation_scope": "pipeline-mechanics evaluation of metric implementation only",
+        "macro_f1": 0.952922077922078,
+        "per_class": [
+          {
+            "class_index": 0,
+            "class_name": "Safe",
+            "f1": 0.9545454545454546,
+            "precision": 0.9130434782608695,
+            "recall": 1.0,
+            "support": 21
+          },
+          {
+            "class_index": 1,
+            "class_name": "Monitor",
+            "f1": 0.8571428571428571,
+            "precision": 1.0,
+            "recall": 0.75,
+            "support": 8
+          },
+          {
+            "class_index": 2,
+            "class_name": "Caution",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          },
+          {
+            "class_index": 3,
+            "class_name": "Urgent",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3
+          }
+        ],
+        "quadratic_weighted_kappa": 0.9732582688247713,
+        "sample_count": 38,
+        "warning": "This result is not an OSTOSENSE performance claim unless the predictions come from the approved real-data evaluation protocol; it validates metric mechanics only."
+      }
+    },
+    "OLR": {
+      "development": {
+        "accuracy": 0.9210526315789473,
+        "class_order": [
+          {
+            "index": 0,
+            "name": "Safe"
+          },
+          {
+            "index": 1,
+            "name": "Monitor"
+          },
+          {
+            "index": 2,
+            "name": "Caution"
+          },
+          {
+            "index": 3,
+            "name": "Urgent"
+          }
+        ],
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            10,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            6
+          ]
+        ],
+        "confusion_matrix_orientation": "rows=ground_truth, columns=predicted",
+        "evaluation_scope": "pipeline-mechanics evaluation of metric implementation only",
+        "macro_f1": 0.9256410256410257,
+        "per_class": [
+          {
+            "class_index": 0,
+            "class_name": "Safe",
+            "f1": 0.9333333333333333,
+            "precision": 0.875,
+            "recall": 1.0,
+            "support": 42
+          },
+          {
+            "class_index": 1,
+            "class_name": "Monitor",
+            "f1": 0.7692307692307693,
+            "precision": 1.0,
+            "recall": 0.625,
+            "support": 16
+          },
+          {
+            "class_index": 2,
+            "class_name": "Caution",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 12
+          },
+          {
+            "class_index": 3,
+            "class_name": "Urgent",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          }
+        ],
+        "quadratic_weighted_kappa": 0.960167714884696,
+        "sample_count": 76,
+        "warning": "This result is not an OSTOSENSE performance claim unless the predictions come from the approved real-data evaluation protocol; it validates metric mechanics only."
+      },
+      "validation": {
+        "accuracy": 0.9473684210526315,
+        "class_order": [
+          {
+            "index": 0,
+            "name": "Safe"
+          },
+          {
+            "index": 1,
+            "name": "Monitor"
+          },
+          {
+            "index": 2,
+            "name": "Caution"
+          },
+          {
+            "index": 3,
+            "name": "Urgent"
+          }
+        ],
+        "confusion_matrix": [
+          [
+            21,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3
+          ]
+        ],
+        "confusion_matrix_orientation": "rows=ground_truth, columns=predicted",
+        "evaluation_scope": "pipeline-mechanics evaluation of metric implementation only",
+        "macro_f1": 0.952922077922078,
+        "per_class": [
+          {
+            "class_index": 0,
+            "class_name": "Safe",
+            "f1": 0.9545454545454546,
+            "precision": 0.9130434782608695,
+            "recall": 1.0,
+            "support": 21
+          },
+          {
+            "class_index": 1,
+            "class_name": "Monitor",
+            "f1": 0.8571428571428571,
+            "precision": 1.0,
+            "recall": 0.75,
+            "support": 8
+          },
+          {
+            "class_index": 2,
+            "class_name": "Caution",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          },
+          {
+            "class_index": 3,
+            "class_name": "Urgent",
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3
+          }
+        ],
+        "quadratic_weighted_kappa": 0.9732582688247713,
+        "sample_count": 38,
+        "warning": "This result is not an OSTOSENSE performance claim unless the predictions come from the approved real-data evaluation protocol; it validates metric mechanics only."
+      }
+    }
+  },
+  "model_sha256": "ceb2922841431a38c274e0ebd5c350873a28a95f40a6f6aab2194a1603b93cef",
+  "optimizer_parity": {
+    "beta_max_absolute_difference": 0.0,
+    "class_prediction_parity": true,
+    "development_row_count": 76,
+    "optimizer_iteration_count": 26,
+    "parity_tolerance": 1e-06,
+    "probability_max_absolute_difference": 0.0,
+    "solver_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "solver_method": "L-BFGS-B",
+    "solver_status": 0,
+    "solver_success": true,
+    "theta_max_absolute_difference": 0.0,
+    "validation_row_count": 38
+  },
+  "pilot_manifest": {
+    "aggregation": {
+      "method": "median of each consecutive complete 10-sample group",
+      "outlier_replacement": "none",
+      "output_rate_hz": 1,
+      "partial_group_policy": "exclude and report",
+      "source_rate_hz": 10
+    },
+    "channel_roles": {
+      "descriptive_and_fail_safe_only": [
+        "Res_15",
+        "Res_16"
+      ],
+      "model_candidates": [
+        "Kap_4",
+        "Kap_5",
+        "Kap_7"
+      ]
+    },
+    "config_id": "real-pilot-v0.1",
+    "correlation": {
+      "channels": [
+        "Res_15",
+        "Res_16",
+        "Kap_4",
+        "Kap_5",
+        "Kap_7"
+      ],
+      "dispersion_output": "per-pair interquartile range",
+      "excluded_sessions": [
+        "P006"
+      ],
+      "included_sessions": [
+        "P001",
+        "P002",
+        "P003",
+        "P004-1",
+        "P004-2",
+        "P004-3",
+        "P005-1",
+        "P005-2",
+        "P005-3",
+        "P007"
+      ],
+      "method": "Spearman within each session, then median across sessions",
+      "session_weighting": "equal",
+      "valid_session_pair_counts": {
+        "Kap_4__Kap_4": 10,
+        "Kap_4__Kap_5": 10,
+        "Kap_4__Kap_7": 10,
+        "Kap_4__Res_15": 10,
+        "Kap_4__Res_16": 10,
+        "Kap_5__Kap_4": 10,
+        "Kap_5__Kap_5": 10,
+        "Kap_5__Kap_7": 10,
+        "Kap_5__Res_15": 10,
+        "Kap_5__Res_16": 10,
+        "Kap_7__Kap_4": 10,
+        "Kap_7__Kap_5": 10,
+        "Kap_7__Kap_7": 10,
+        "Kap_7__Res_15": 10,
+        "Kap_7__Res_16": 10,
+        "Res_15__Kap_4": 10,
+        "Res_15__Kap_5": 10,
+        "Res_15__Kap_7": 10,
+        "Res_15__Res_15": 10,
+        "Res_15__Res_16": 10,
+        "Res_16__Kap_4": 10,
+        "Res_16__Kap_5": 10,
+        "Res_16__Kap_7": 10,
+        "Res_16__Res_15": 10,
+        "Res_16__Res_16": 10
+      }
+    },
+    "dataset_origin": "REAL_PILOT_UNLABELED",
+    "full_1hz_bin_count": 2184,
+    "input_sha256": {
+      "P001.csv": "63e4e35cb6396387aa0910bb11517913b30e226292be67c5c393cb69ec163b84",
+      "P002.csv": "d1bb2286f7202a6d77cb8eb32da7ea2baf2f5944e1c3ad2c451e551a4f14ac2a",
+      "P003.csv": "e7b304e9ff6b7cb10b5b9bcb5d80b31305654ae4d27395c95e46c812bb083e59",
+      "P004.csv": "91d015e465cc18cfe7943b74aea438b213ac7985a37f1efa7d5469cb05d9569a",
+      "P004_2.csv": "f2eb343bfff545c77a0677b317fc9f1b838c3da4119d1dd14cb499ed91e0e5bf",
+      "P004_3.csv": "27c76f4c249e93ce3586a4b1fed68ee214914c89fc164ee15bf9ace431c9ef76",
+      "P005.csv": "2d028b620cabc14a9c8fc19420309b54d3f75e6b0aa15fbbdd8c1adae2947b2c",
+      "P005_2.csv": "2ebb3e7bfbe6409a9b29a988b6040dcbabd4e16b2803605e7129787647791e2e",
+      "P005_3.csv": "48866ab45a97351e0890e6cda2d8ba951a735ee107ab884b89c9ded463f41a13",
+      "P006.csv": "35c2e98afc4323a0a73061cdc1b8cc4fa1c37b3c7cfd863d6427a06843601411",
+      "P007.csv": "668bdb581f4486969747971e75292edec469c301bfe61f20d9aaa508e14559cd"
+    },
+    "output_sha256": {
+      "qc_sessions.csv": "3537b8c0b9cbdca06668943ebf10fe65c35b41f950581a940219d631fa5e8167",
+      "samples_1hz.csv": "a2eee5ba9508ada7d28961239d07b62c31ef48ff94d531feca0da627e98ed189",
+      "sensor_correlation_iqr.csv": "4f1c2ed8bc2d0965ba743a858f3ab9c2cf3106892654e6236176977b6f7058a0",
+      "sensor_correlation_median.csv": "07ccd1dfe1b3fbe2d48ed616e84026ae43e232ce03e1996d893de371b0442e52",
+      "window_features_unlabeled.csv": "9a4a4768c1bd7fca1b555f7703fdfc955178cf3050eb669d4f7cdfb1c6ad8a0f"
+    },
+    "partial_final_raw_sample_count": 47,
+    "pilot_preparer_version": "0.1.0",
+    "provisional_baseline": {
+      "center": "median",
+      "mad": "median absolute deviation",
+      "normalization": "(value-baseline)/scale",
+      "scale": "max(abs(baseline), 1.4826*MAD, 1)",
+      "seconds": 20,
+      "verified_dry": false
+    },
+    "raw_row_count": 21887,
+    "scope": "unlabeled real-pilot preprocessing and descriptive analysis",
+    "session_count": 11,
+    "unlabeled_window_count": 94,
+    "warning": "REAL_PILOT_UNLABELED. Data ini digunakan untuk pemeriksaan kualitas, ekstraksi fitur tanpa label, dan analisis korelasi deskriptif. Baseline 20 detik bersifat sementara karena awal sesi belum diverifikasi sebagai kondisi kering. Data ini tidak membuktikan akurasi AI, performa peringatan, validitas sensor, atau manfaat klinis.",
+    "windowing": {
+      "feature_columns": [
+        "kap_4_delta_mean",
+        "kap_4_delta_last",
+        "kap_4_delta_slope_per_s",
+        "kap_4_delta_variance",
+        "kap_4_delta_range",
+        "kap_5_delta_mean",
+        "kap_5_delta_last",
+        "kap_5_delta_slope_per_s",
+        "kap_5_delta_variance",
+        "kap_5_delta_range",
+        "kap_7_delta_mean",
+        "kap_7_delta_last",
+        "kap_7_delta_slope_per_s",
+        "kap_7_delta_variance",
+        "kap_7_delta_range"
+      ],
+      "interval": "(t-W,t]",
+      "label_status": "UNLABELED",
+      "stride_seconds": 10,
+      "window_seconds": 120
+    }
+  },
+  "python_version": "3.12.3",
+  "repo_commit": "5cd016370d6559ad2c61b2ebecb49c2b54fa5e91",
+  "repo_path": ".",
+  "sessions": [
+    {
+      "complete_1hz_bins": 298,
+      "correlation_included": "true",
+      "elapsed_span_s": 298.4,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 298.5,
+      "n_raw": 2985,
+      "partial_raw_samples": 5,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kering_diam",
+      "session_id": "P001",
+      "windows": 18
+    },
+    {
+      "complete_1hz_bins": 271,
+      "correlation_included": "true",
+      "elapsed_span_s": 271.59999999999997,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 271.7,
+      "n_raw": 2717,
+      "partial_raw_samples": 7,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kering_dengan_gerakan",
+      "session_id": "P002",
+      "windows": 16
+    },
+    {
+      "complete_1hz_bins": 331,
+      "correlation_included": "true",
+      "elapsed_span_s": 331.09999999999997,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 331.2,
+      "n_raw": 3312,
+      "partial_raw_samples": 2,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "pengisian_kantong_bertahap",
+      "session_id": "P003",
+      "windows": 22
+    },
+    {
+      "complete_1hz_bins": 153,
+      "correlation_included": "true",
+      "elapsed_span_s": 153.6,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 153.7,
+      "n_raw": 1537,
+      "partial_raw_samples": 7,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kebocoran_bertahap",
+      "session_id": "P004-1",
+      "windows": 4
+    },
+    {
+      "complete_1hz_bins": 126,
+      "correlation_included": "true",
+      "elapsed_span_s": 126.60000000000001,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 126.7,
+      "n_raw": 1267,
+      "partial_raw_samples": 7,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kebocoran_bertahap",
+      "session_id": "P004-2",
+      "windows": 1
+    },
+    {
+      "complete_1hz_bins": 152,
+      "correlation_included": "true",
+      "elapsed_span_s": 152.6,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 152.7,
+      "n_raw": 1527,
+      "partial_raw_samples": 7,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kebocoran_bertahap",
+      "session_id": "P004-3",
+      "windows": 4
+    },
+    {
+      "complete_1hz_bins": 183,
+      "correlation_included": "true",
+      "elapsed_span_s": 183.0,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 183.1,
+      "n_raw": 1831,
+      "partial_raw_samples": 1,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kebocoran_mendadak",
+      "session_id": "P005-1",
+      "windows": 7
+    },
+    {
+      "complete_1hz_bins": 151,
+      "correlation_included": "true",
+      "elapsed_span_s": 150.9,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 151.0,
+      "n_raw": 1510,
+      "partial_raw_samples": 0,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kebocoran_mendadak",
+      "session_id": "P005-2",
+      "windows": 4
+    },
+    {
+      "complete_1hz_bins": 167,
+      "correlation_included": "true",
+      "elapsed_span_s": 167.4,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 167.5,
+      "n_raw": 1675,
+      "partial_raw_samples": 5,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kebocoran_mendadak",
+      "session_id": "P005-3",
+      "windows": 5
+    },
+    {
+      "complete_1hz_bins": 112,
+      "correlation_included": "false",
+      "elapsed_span_s": 112.5,
+      "first_time_s": 0.1,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 112.6,
+      "n_raw": 1126,
+      "partial_raw_samples": 6,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "uji_gangguan_sensor",
+      "session_id": "P006",
+      "windows": 0
+    },
+    {
+      "complete_1hz_bins": 240,
+      "correlation_included": "true",
+      "elapsed_span_s": 239.9,
+      "first_time_s": 0.0,
+      "interval_max_ms": 100,
+      "interval_min_ms": 100,
+      "label_status": "UNLABELED",
+      "last_time_s": 239.9,
+      "n_raw": 2400,
+      "partial_raw_samples": 0,
+      "qc_status": "STRUCTURAL_PASS",
+      "scenario": "kantong_diisi_sampai_penuh",
+      "session_id": "P007",
+      "windows": 13
+    }
+  ],
+  "source_path": "PRIVATE_RAW_DATA_NOT_INCLUDED",
+  "versions": {
+    "matplotlib": "3.11.1",
+    "mord": "0.7",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.14.1"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "status": "PASS",
+  "independent_metrics_library": "scikit-learn",
+  "numeric_tolerance": 1e-12,
+  "verified_model_partitions": [
+    {
+      "model": "OLR",
+      "partition": "development",
+      "n": 76,
+      "status": "PASS"
+    },
+    {
+      "model": "OLR",
+      "partition": "validation",
+      "n": 38,
+      "status": "PASS"
+    },
+    {
+      "model": "Logistic Regression",
+      "partition": "development",
+      "n": 76,
+      "status": "PASS"
+    },
+    {
+      "model": "Logistic Regression",
+      "partition": "validation",
+      "n": 38,
+      "status": "PASS"
+    },
+    {
+      "model": "Decision Tree",
+      "partition": "development",
+      "n": 76,
+      "status": "PASS"
+    },
+    {
+      "model": "Decision Tree",
+      "partition": "validation",
+      "n": 38,
+      "status": "PASS"
+    }
+  ],
+  "raw_source_hashes_unchanged": true,
+  "all_real_rows_reconciled": true,
+  "numeric_files_compared": 19,
+  "comparison": [
+    {
+      "file": "tables/confusion_matrices.csv",
+      "sha256": "96afe67cc75ef08c262e4a65394f956f5c09f15e46451c491f0341a1aff86528",
+      "identical": true
+    },
+    {
+      "file": "tables/exclusion_audit.csv",
+      "sha256": "f8d70c1f8deaa6c1ca2d4e580b4998f947ab5ef3b3254b8c29ede93cf332bea0",
+      "identical": true
+    },
+    {
+      "file": "tables/model_metrics.csv",
+      "sha256": "13b9eb05decbcb8865165978dbff2557051bf540bef378d550a95b4e0ff5cc66",
+      "identical": true
+    },
+    {
+      "file": "tables/optimization_trace.csv",
+      "sha256": "3d6b17dfcd10af7e0f459fbed5d0307aa7b98945fd98d6226e682e3702f1d93a",
+      "identical": true
+    },
+    {
+      "file": "tables/per_class_metrics.csv",
+      "sha256": "4df6486099fbd95937515e80e9e935d725d8ff962d69d2e922e8102408866908",
+      "identical": true
+    },
+    {
+      "file": "tables/qc_sessions.csv",
+      "sha256": "3537b8c0b9cbdca06668943ebf10fe65c35b41f950581a940219d631fa5e8167",
+      "identical": true
+    },
+    {
+      "file": "tables/real_channel_statistics.csv",
+      "sha256": "4edc4daba156ef78f5ea16c16e53890ac3cc9058891b7c0722f6b36be9a692ac",
+      "identical": true
+    },
+    {
+      "file": "tables/real_channel_status_counts.csv",
+      "sha256": "381b28248d79508d46ae67bac751778ef3494e30a81c7b40cf077d94a464eb62",
+      "identical": true
+    },
+    {
+      "file": "tables/real_sessions.csv",
+      "sha256": "a92e767597267699813045bb8e0b0ea9996cdb71f0803bd8b7d02e6b1c0a618e",
+      "identical": true
+    },
+    {
+      "file": "tables/sensor_correlation_iqr.csv",
+      "sha256": "4f1c2ed8bc2d0965ba743a858f3ab9c2cf3106892654e6236176977b6f7058a0",
+      "identical": true
+    },
+    {
+      "file": "tables/sensor_correlation_median.csv",
+      "sha256": "07ccd1dfe1b3fbe2d48ed616e84026ae43e232ce03e1996d893de371b0442e52",
+      "identical": true
+    },
+    {
+      "file": "tables/source_inventory.csv",
+      "sha256": "b2dfa96a6d3531eb26e9b02489bafef57d431d09ae49061b4d267886d89a3b1f",
+      "identical": true
+    },
+    {
+      "file": "tables/synthetic_predictions.csv",
+      "sha256": "bc3c404be94cc23a437cb3a35d0592c378157a9a3182a37704ebbd5479499492",
+      "identical": true
+    },
+    {
+      "file": "analysis.json",
+      "sha256": "93cf30a718ccfbb6887eeb88c66c81e2f89f41aad9adce0ce886ba9b75feb90a",
+      "identical": true
+    },
+    {
+      "file": "model_specifications.json",
+      "sha256": "7e9d2dff06d18fb9d689af6b30d45465b0ec58d1482155ed79de62fec0a5ee41",
+      "identical": true
+    },
+    {
+      "file": "work/comparator_parameters.json",
+      "sha256": "6a0ee05b7c18de34a2b847919f51064a222d171d459f1597158f88f4afab3b33",
+      "identical": true
+    },
+    {
+      "file": "checks/optimizer_parity.json",
+      "sha256": "a2c7e8fc4e3816abbeddc8ecc2e791a2e4cc96f2278b9f5c33dbea4f4a1b165d",
+      "identical": true
+    },
+    {
+      "file": "checks/group_separation.json",
+      "sha256": "c474e0be2c5196800ab4789e6d534994a8f45ca912de884b851a5f5bf85989b1",
+      "identical": true
+    },
+    {
+      "file": "checks/analysis_checks.json",
+      "sha256": "ff73ddf8443e767c55e3c54742514a510952302a8ba4cf0e1cc7fe306de13222",
+      "identical": true
+    }
+  ],
+  "reference": "LOCAL_EVALUATION_OUTPUT",
+  "reproduction": "LOCAL_REPRODUCTION_OUTPUT",
+  "command": "ai/.venv/bin/python reproduce.py --output <fresh directory>",
+  "figures": "Visual QA is recorded separately; numerical files compared byte for byte."
+}

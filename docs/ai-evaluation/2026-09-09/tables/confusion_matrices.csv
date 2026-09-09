@@ -1,0 +1,25 @@
+model,partition,true_class,pred_Safe,pred_Monitor,pred_Caution,pred_Urgent
+OLR,development,Safe,42,0,0,0
+OLR,development,Monitor,6,10,0,0
+OLR,development,Caution,0,0,12,0
+OLR,development,Urgent,0,0,0,6
+OLR,validation,Safe,21,0,0,0
+OLR,validation,Monitor,2,6,0,0
+OLR,validation,Caution,0,0,6,0
+OLR,validation,Urgent,0,0,0,3
+Logistic Regression,development,Safe,42,0,0,0
+Logistic Regression,development,Monitor,6,10,0,0
+Logistic Regression,development,Caution,0,0,12,0
+Logistic Regression,development,Urgent,0,0,0,6
+Logistic Regression,validation,Safe,21,0,0,0
+Logistic Regression,validation,Monitor,2,6,0,0
+Logistic Regression,validation,Caution,0,0,6,0
+Logistic Regression,validation,Urgent,0,0,0,3
+Decision Tree,development,Safe,42,0,0,0
+Decision Tree,development,Monitor,2,14,0,0
+Decision Tree,development,Caution,0,0,12,0
+Decision Tree,development,Urgent,0,0,0,6
+Decision Tree,validation,Safe,21,0,0,0
+Decision Tree,validation,Monitor,1,7,0,0
+Decision Tree,validation,Caution,0,0,6,0
+Decision Tree,validation,Urgent,0,0,0,3

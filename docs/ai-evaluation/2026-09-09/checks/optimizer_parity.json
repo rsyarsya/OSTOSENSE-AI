@@ -1,0 +1,14 @@
+{
+  "beta_max_absolute_difference": 0.0,
+  "class_prediction_parity": true,
+  "development_row_count": 76,
+  "optimizer_iteration_count": 26,
+  "parity_tolerance": 1e-06,
+  "probability_max_absolute_difference": 0.0,
+  "solver_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+  "solver_method": "L-BFGS-B",
+  "solver_status": 0,
+  "solver_success": true,
+  "theta_max_absolute_difference": 0.0,
+  "validation_row_count": 38
+}
