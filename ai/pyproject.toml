@@ -5,10 +5,25 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ostosense-contract"
 version = "0.2.0"
-description = "OSTOSENSE data contracts, engineering model, offline pipeline, and experimental AI service"
+description = "Reproducible ordinal classification and portable inference for experimental ostomy monitoring"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
+keywords = ["ordinal-regression", "sensor-processing", "ostomy", "reproducible-research"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: C++",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Repository = "https://github.com/rsyarsya/OSTOSENSE-AI"
+Documentation = "https://github.com/rsyarsya/OSTOSENSE-AI/blob/main/docs/README.md"
+Issues = "https://github.com/rsyarsya/OSTOSENSE-AI/issues"
+Changelog = "https://github.com/rsyarsya/OSTOSENSE-AI/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 serve = ["fastapi==0.141.1", "uvicorn==0.52.4"]

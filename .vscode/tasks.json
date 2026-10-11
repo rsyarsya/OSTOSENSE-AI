@@ -2,34 +2,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "OSTOSENSE: Python unit tests",
-      "type": "shell",
-      "command": "PYTHONDONTWRITEBYTECODE=1 ../.venv/bin/python -m unittest discover -s ../tests -v",
-      "options": {
-        "cwd": "${workspaceFolder}/ai/src"
-      },
-      "group": "test",
-      "problemMatcher": []
-    },
-    {
-      "label": "OSTOSENSE: C++ host tests",
-      "type": "shell",
-      "command": "for name in data_contract ordinal_inference capacitive_features; do g++ -std=c++17 -Wall -Wextra -Werror -pedantic -I firmware/include firmware/tests/${name}_test.cpp -o /tmp/ostosense-${name}-test && /tmp/ostosense-${name}-test || exit 1; done",
+      "label": "OSTOSENSE: Verify",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "scripts/verify.py"
+      ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "group": "test",
-      "problemMatcher": [
-        "$gcc"
-      ]
-    },
-    {
-      "label": "OSTOSENSE: Verify all contracts",
-      "dependsOrder": "sequence",
-      "dependsOn": [
-        "OSTOSENSE: Python unit tests",
-        "OSTOSENSE: C++ host tests"
-      ],
       "group": {
         "kind": "test",
         "isDefault": true
@@ -37,14 +18,39 @@
       "problemMatcher": []
     },
     {
-      "label": "OSTOSENSE: Full quality gate",
-      "type": "shell",
-      "command": "./scripts/verify.sh",
+      "label": "OSTOSENSE: Python tests",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "-W",
+        "error",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "ai/tests"
+      ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "group": "test",
       "problemMatcher": []
+    },
+    {
+      "label": "OSTOSENSE: C++ host tests",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "scripts/verify.py",
+        "--cpp-only"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": [
+        "$gcc"
+      ]
     }
   ]
 }

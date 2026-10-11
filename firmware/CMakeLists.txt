@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.16)
+project(ostosense_host_tests LANGUAGES CXX)
+
+enable_testing()
+add_library(ostosense INTERFACE)
+target_include_directories(ostosense INTERFACE include)
+target_compile_features(ostosense INTERFACE cxx_std_17)
+
+foreach(name data_contract ordinal_inference capacitive_features)
+    add_executable(${name}_test tests/${name}_test.cpp)
+    target_link_libraries(${name}_test PRIVATE ostosense)
+    if(MSVC)
+        target_compile_options(${name}_test PRIVATE /W4 /WX)
+    else()
+        target_compile_options(${name}_test PRIVATE -Wall -Wextra -Werror -pedantic)
+    endif()
+    add_test(NAME ${name} COMMAND ${name}_test)
+endforeach()

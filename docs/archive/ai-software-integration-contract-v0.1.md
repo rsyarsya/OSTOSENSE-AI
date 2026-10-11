@@ -1,7 +1,10 @@
 # Kontrak Integrasi Keluaran AI OSTOSENSE v0.1
 
+> Historical record. This document preserves earlier project assumptions or
+> a dated audit. See the [current documentation](../README.md) for supported behavior.
+
 > Versi ini dipertahankan untuk kompatibilitas. Integrasi baru menggunakan
-> [v0.2](./ai-software-integration-contract-v0.2.md).
+> [v0.2](../ai-software-integration-contract-v0.2.md).
 
 Dokumen ini menjelaskan data minimum yang boleh dikirim oleh komponen AI ke
 backend, aplikasi, atau web. Kontrak mesin yang menjadi acuan tersedia di

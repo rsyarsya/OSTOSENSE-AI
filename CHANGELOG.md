@@ -1,17 +1,34 @@
 # Changelog
 
-## 0.2.0 - Prepared Locally, 2026-09-08
+## Unreleased
 
-- Bundle the engineering-v0.3 ordinal model, training provenance, integrity
-  hashes, model card, and four genuine synthetic inference examples in the wheel.
-- Add deterministic integration CLI, operator-confirmed raw-window processing,
-  and an optional authenticated stateless HTTP service.
-- Add raw-window and service-response JSON Schemas, TypeScript interfaces,
-  service documentation, and a dated consumer MUST FIX checklist.
-- Extend tests, clean-wheel model checks, and container CI smoke coverage.
-- Keep data/label contracts, feature formulas, model parameters, runtime v0.2,
-  and C++ kernels unchanged. Real-data model validation remains unavailable.
+### Documentation
 
-This entry records prepared source, not a GitHub release or production deployment.
-Software repositories, production databases, and hardware are not changed by
-this AI batch. A publisher must verify CI and approve publication separately.
+- Reorganize public documentation around installation, architecture, integration,
+  reproducibility, and research interpretation.
+- Publish citation metadata and clarify copyright/reuse status.
+- Move dated internal audits and superseded proposals into a labeled archive.
+- Document the model's synthetic evaluation, data availability, and limitations.
+
+### Developer experience
+
+- Add cross-platform experiment reproduction and verification commands.
+- Check public comparison metrics directly against published predictions.
+- Add Windows CI, synthetic reproduction CI, and a CMake/CTest host build.
+- Use portable editor tasks and consistent LF checkout rules.
+- Fix Windows model loading affected by CRLF conversion and use Git index modes
+  when checking executable permissions.
+
+The model parameters, class semantics, and versioned payload schemas are unchanged.
+
+## 0.2.0 — 2026-09-08
+
+- Include the synthetic ordinal model, provenance, integrity hashes, model card,
+  and four calculated inference examples in the Python package.
+- Add a file-based integration CLI, operator-confirmed raw-window processing,
+  and an optional authenticated HTTP service.
+- Add raw-window/service-response schemas and TypeScript interfaces.
+- Extend service tests, isolated wheel checks, and container smoke coverage.
+
+This version identifies the Python package. It does not indicate a validated
+real-data model, clinical deployment, or a GitHub release.

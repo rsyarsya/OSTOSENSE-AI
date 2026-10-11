@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you reference this software, cite the repository and record the exact commit used. See REUSE.md for reuse permissions."
+type: software
+title: "OSTOSENSE AI: Ordinal Classification for Experimental Ostomy Monitoring"
+authors:
+  - name: "OSTOSENSE contributors"
+repository-code: "https://github.com/rsyarsya/OSTOSENSE-AI"
+url: "https://github.com/rsyarsya/OSTOSENSE-AI"
+abstract: >-
+  A research prototype providing deterministic sensor-data processing,
+  synthetic ordinal classification experiments, portable C++ inference,
+  and versioned application interfaces. The bundled model is trained on
+  synthetic data and has not been validated for clinical use.
+keywords:
+  - ostomy monitoring
+  - ordinal logistic regression
+  - capacitive sensing
+  - reproducible research
+  - embedded inference

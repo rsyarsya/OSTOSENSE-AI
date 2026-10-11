@@ -1,5 +1,5 @@
 {
-  "python.defaultInterpreterPath": "${workspaceFolder}/ai/.venv/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
   "python.testing.unittestEnabled": true,
   "python.testing.pytestEnabled": false,
   "python.testing.unittestArgs": [
@@ -14,25 +14,15 @@
   "C_Cpp.default.cppStandard": "c++17",
   "files.exclude": {
     "**/__pycache__": true,
-    "**/.pytest_cache": true,
-    "**/.mypy_cache": true,
-    "**/.backup": true,
-    "**/node_modules": true,
-    "ai/build": true
+    "**/*.egg-info": true
   },
   "search.exclude": {
+    ".venv": true,
     "ai/.venv": true,
+    "build": true,
     "ai/build": true,
-    "**/.backup": true,
-    "**/node_modules": true,
-    "**/__pycache__": true
+    "outputs": true
   },
-  "python.analysis.exclude": [
-    "ai/.venv/**",
-    "ai/build/**",
-    "**/.backup/**",
-    "**/node_modules/**"
-  ],
   "python.analysis.extraPaths": [
     "${workspaceFolder}/ai/src"
   ]

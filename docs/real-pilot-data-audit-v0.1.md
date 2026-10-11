@@ -1,49 +1,40 @@
-# Audit Data Pilot Nyata P001-P007 v0.1
+# Real sensor dataset: availability and limitations
 
-## Ringkasan terverifikasi
+The published pilot inventory describes 11 logger files identified as P001–P007
+(with repeated runs for some identifiers). The recordings contain 21,887 samples
+from three capacitive channels and two resistive channels at nominal 10 Hz.
 
-Raw P001-P007 adalah hasil pembacaan ESP32 nyata lima kanal pada 10 Hz. Sebelas
-file yang tersedia memiliki hash yang sama dengan hasil pemrosesan pilot
-sebelumnya. Raw CSV tidak dimasukkan ke repository publik; inventaris mesin
-tersedia di `ai/data-manifests/real-pilot-v0.1.inventory.json`.
+Median aggregation produces 2,184 one-second summaries and 94 unlabeled
+120-second windows with a 10-second stride. These recordings support descriptive
+sensor analysis. They do not provide verified four-class risk labels.
 
-| Item | Nilai |
-|---|---:|
-| Sesi/file | 11 |
-| Baris raw | 21.887 |
-| Kelompok 1 Hz lengkap | 2.184 |
-| Sampel akhir parsial yang dilaporkan | 47 |
-| Window 120 detik tanpa label | 94 |
-| Sesi analisis deskriptif | 10 |
+## Available artifacts
 
-P001 menguji kondisi kering diam, P002 kering dengan gerakan, P003 pengisian
-kantong bertahap, P004 kebocoran bertahap, P005 kebocoran mendadak, P006 gangguan
-sensor, dan P007 kantong penuh. Pengulangan P004/P005 dipertahankan sebagai sesi
-terpisah. P006 sengaja tidak digunakan dalam korelasi deskriptif.
+- [Inventory and source hashes](../ai/data-manifests/real-pilot-v0.1.inventory.json)
+- [Preparation configuration](../ai/configs/real-pilot-v0.1.json)
+- [Session statistics](ai-evaluation/2026-09-09/tables/real_sessions.csv)
+- [Channel statistics](ai-evaluation/2026-09-09/tables/real_channel_statistics.csv)
+- [Original analysis](ai-evaluation/2026-09-09/laporan.md)
 
-## Yang dapat digunakan
+Raw CSV files are private. Published summaries do not imply permission to obtain
+or redistribute the source recordings.
 
-- Pemeriksaan struktur dan timing logger.
-- Pemeriksaan respons dan kestabilan kanal secara deskriptif.
-- Pengujian alur raw 10 Hz menjadi ringkasan 1 Hz dan fitur tanpa label.
-- Demonstrasi integrasi model dengan `Kap_7` yang selalu ditandai
-  `LIVE_EXPERIMENTAL` dan `UNVALIDATED`.
+## Interpretation
 
-## Yang tidak dapat disimpulkan
+Channel names are logger identifiers. They are not calibrated humidity,
+volume, or clinically interpreted quantities. The four-strip physical design
+has not been fully mapped to the three recorded capacitive channels here.
 
-Tidak tersedia timestamp kejadian dan label risiko per window yang dapat
-diaudit. Dua puluh detik awal juga belum diverifikasi sebagai kondisi kering.
-Karena pengambilan tambahan tidak memungkinkan, data dipertahankan sebagai
-`REAL_PILOT_UNLABELED`.
+The descriptive preparation uses a provisional first-20-second baseline.
+Its dry condition has not been independently verified. Normalized deltas are
+for exploratory comparison and are not the raw-minus-baseline features used
+by the bundled model.
 
-Nama skenario tidak boleh diubah menjadi label setiap window. Data juga tidak
-boleh diaugmentasi untuk membuat kelas buatan atau dipakai menghitung akurasi,
-Macro F1, kappa, lead time, performa notifikasi, maupun manfaat klinis.
+P006 is a sensor-fault session. It is retained in the evidence but excluded from
+the operational correlation summary. Correlations are calculated within sessions
+and aggregated so that long recordings do not dominate.
 
-## Keputusan integrasi
-
-`Kap_7` dikunci sebagai kanal fitur untuk demo langsung eksperimental karena
-merupakan kanal kapasitif utama pada pemetaan perangkat. `Kap_4` dan `Kap_5`
-tetap tersedia untuk analisis sensor, bukan masukan model lima fitur yang sedang
-diintegrasikan. Keputusan ini tidak membuktikan bahwa `Kap_7` adalah kanal
-terbaik secara klinis.
+Missing event annotations and risk labels prevent classifier training,
+real-data accuracy estimation, or evaluation of warning lead time. Operator-
+confirmed `Kap_7` requests may exercise the experimental adapter, but their
+classes remain explicitly unvalidated.
