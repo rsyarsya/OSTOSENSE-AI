@@ -1,77 +1,45 @@
-# Dokumentasi AI OSTOSENSE
+# Documentation
 
-Untuk integrasi software terbaru, mulai dari
-[Menjalankan dan Menghubungkan Model AI](./ai-service-integration-v0.1.md) dan
-[MUST FIX Tim Software, 8 September 2026](./software-must-fix-2026-09-08.md).
-Model tersedia sebagai aset paket; deployment software/hardware tetap terpisah.
+Start with the [repository overview](../README.md). These guides describe the
+implemented AI component and distinguish it from the broader wearable project.
 
-Untuk hasil evaluasi terbaru, lihat
-[Evaluasi AI, 9 September 2026](./ai-evaluation/2026-09-09/README.md):
-perbandingan tiga model pada fixture sintetis dan karakterisasi 11 sesi sensor nyata.
-Metrik sintetis tersebut bukan akurasi risiko pada data nyata.
+## Guides
 
-Dokumentasi fondasi AI disusun dalam dua lapisan:
+| Guide | Purpose |
+|---|---|
+| [Architecture](architecture.md) | Components, signal processing, model, and system boundaries |
+| [Python package](../ai/README.md) | Modules, APIs, and individual pipeline commands |
+| [Reproducibility](reproducibility.md) | Public experiment, expected artifacts, and verification |
+| [Research notes](research.md) | Dataset provenance, evaluation methods, limitations, and citation |
+| [HTTP service](ai-service-integration-v0.1.md) | Installation, configuration, endpoints, and raw-window processing |
+| [C++ kernels](../firmware/README.md) | Host compilation and inference parity |
+| [Contributing](../CONTRIBUTING.md) | Development environment, checks, and change review |
 
-1. [Fondasi Arsitektur AI OSTOSENSE](./ostosense-ai-foundation.md)
+## Specifications
 
-   Penjelasan konseptual sistem, model, user flow, runtime, eksperimen,
-   evaluasi, edge-cloud split, dan roadmap MVP.
+Machine-readable contracts are in [ai/contracts](../ai/contracts/README.md).
+Version numbers identify file formats, not clinical validation levels.
 
-2. [OSTOSENSE AI Data Contract v1.1](./ai-data-contract-v1.1.md)
+| Reference | Status |
+|---|---|
+| [CSV data contract v1.1](ai-data-contract-v1.1.md) | Implemented schema and logger |
+| [Runtime output v0.2](ai-software-integration-contract-v0.2.md) | Current application contract |
+| [Label rulebook v0.3](ai-label-rulebook-v0.3.md) | Label structure specified; real-data boundaries remain unset |
+| [Pipeline configuration](../ai/configs/README.md) | Versioned settings and provenance |
+| [Real sensor inventory](real-pilot-data-audit-v0.1.md) | Unlabeled characterization data; raw files private |
 
-   Definisi teknis tabel, field, enum quality, calibration events, timestamp,
-   dan invariant dataset.
+The current references are in English. Original Indonesian specifications are
+retained in the archive for technical history.
 
-3. [OSTOSENSE AI Label Rulebook v0.3](./ai-label-rulebook-v0.3.md) —
-   **BERLAKU. STRUCTURE LOCKED — NUMERIC BOUNDARIES PILOT_PENDING.**
+## Evidence and history
 
-   Aturan penurunan label ordinal `Safe`/`Monitor`/`Caution`/`Urgent` dari
-   data eksperimen: konvensi window `(t - W, t]`, enam input pelabelan,
-   larangan derivasi label dan fitur, aturan partisi dataset, dan aturan
-   fail-closed untuk event wajib yang malformed. Struktur dikunci; nilai
-   numerik `B1/B2/B3` tetap `PILOT_PENDING`.
-   [v0.2](./ai-label-rulebook-v0.2.md) **digantikan (superseded)** dan
-   dipertahankan sebagai bukti historis.
+- [September 2026 evaluation](ai-evaluation/2026-09-09/README.md): the original
+  publication bundle, including tables, figures, and its recorded checks.
+  Reports and figure labels retain their original language. Historical check
+  results describe that snapshot, not the current branch.
+- [Archived design and integration notes](archive/README.md): earlier proposals,
+  superseded contracts, and dated internal audits. These are background records,
+  not current deployment instructions.
 
-4. [Protokol Pengambilan Data Terintegrasi v0.1](./ai-data-collection-protocol-v0.1.md) —
-   **DRAFT, belum dikunci.**
-
-   Panduan praktis pengambilan data terintegrasi kapasitif + LIG: rig uji,
-   alur sesi, definisi window, fase dry/baseline, protocol manifest,
-   skenario eksperimen, ground truth, matriks pilot, dan QC.
-
-5. [Runbook Shakedown Intake v0.1](./ai-shakedown-runbook-v0.1.md) —
-   **DRAFT, belum dikunci.**
-
-   Panduan operasional untuk 3–5 sesi shakedown rekayasa dua-kanal pertama:
-   penyiapan protocol manifest, ID stabil, logger tersinkron, baseline/dry,
-   event operator, ground truth, penyalinan mentah immutable, perintah
-   `ostosense_ai.raw_qc`, dan interpretasi `PASS`/`FAIL`/`PARTIAL`. Template
-   manifest ada di
-   [`templates/protocol_manifest-shakedown-v0.1.example.csv`](./templates/protocol_manifest-shakedown-v0.1.example.csv)
-   (baris `EXAMPLE_ONLY`, wajib diganti; bukan data nyata atau ambang tetap).
-
-6. [Kontrak Integrasi Keluaran AI v0.2](./ai-software-integration-contract-v0.2.md) —
-   **BERLAKU UNTUK INTEGRASI SOFTWARE BARU.**
-   Menjelaskan keadaan unavailable, simulasi `TEST_ONLY`, dan keluaran sensor
-   nyata `LIVE_EXPERIMENTAL`/`UNVALIDATED`, termasuk daftar `MUST FIX` untuk
-   backend, aplikasi, serta web. [v0.1](./ai-software-integration-contract-v0.1.md)
-   dipertahankan untuk kompatibilitas.
-
-7. [Audit Data Pilot Nyata P001-P007 v0.1](./real-pilot-data-audit-v0.1.md) —
-   Ringkasan kualitas, kegunaan, dan keterbatasan 11 sesi nyata tanpa
-   mempublikasikan raw CSV.
-
-8. [Readiness Repository v0.1](./repository-readiness-v0.1.md) —
-   Pemisahan status repository, integrasi engineering, live eksperimental, dan
-   model live tervalidasi.
-
-Gunakan dokumen fondasi untuk diskusi tim, dosen, dan penyusunan laporan.
-Gunakan data contract sebagai acuan saat logger dan firmware mulai dikerjakan.
-Gunakan label rulebook v0.3 sebagai acuan skrip pelabelan. Struktur pelabelan
-sudah dikunci, tetapi nilai boundary `B1/B2/B3` masih `PILOT_PENDING`: jangan
-menetapkan boundary numerik atau melatih model pada data nyata sebelum pilot
-Tier 1 tersedia dan boundary dibekukan sebelum Final Test.
-Gunakan kontrak integrasi keluaran AI sebagai satu-satunya acuan kelas risiko
-yang diterima software; jangan menurunkan persentase atau hitung mundur dari
-kelas tersebut.
+The current source, configuration, schemas, and tests take precedence over
+historical design notes when describing executable behavior.

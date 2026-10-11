@@ -1,5 +1,8 @@
 # OSTOSENSE AI Label Rulebook v0.2
 
+> Historical record. This document preserves earlier project assumptions or
+> a dated audit. See the [current documentation](../README.md) for supported behavior.
+
 **Status: DRAFT — NOT LOCKED**
 
 Dokumen ini mendefinisikan bagaimana data eksperimen terkontrol OSTOSENSE
@@ -14,9 +17,9 @@ diarsipkan di `.backup/2026-07-12-rulebook-codex-review/`.
 
 Acuan:
 
-- [AI Data Contract v1.1](./ai-data-contract-v1.1.md) — skema
+- [AI Data Contract v1.1](../ai-data-contract-v1.1.md) — skema
   `sessions.csv`, `samples.csv`, `events.csv`, enum quality, dan event.
-- [Fondasi Arsitektur AI](./ostosense-ai-foundation.md) — khususnya §6.3
+- [Fondasi Arsitektur AI](ostosense-ai-foundation.md) — khususnya §6.3
   (kelas), §12 (label time-to-leak), §13 (arm eksperimen), §15 (evaluasi).
 
 Rulebook ini tidak mengubah Data Contract v1.1. Label `risk_label`

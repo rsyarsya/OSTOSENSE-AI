@@ -3,7 +3,7 @@ import tomllib
 from pathlib import Path
 
 
-class OstosenseAiSkeletonTests(unittest.TestCase):
+class PackageTests(unittest.TestCase):
     def test_package_imports(self) -> None:
         import ostosense_ai
 

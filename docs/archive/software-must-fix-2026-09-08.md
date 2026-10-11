@@ -1,5 +1,8 @@
 # Pekerjaan Integrasi Tim Software
 
+> Historical record. This document preserves earlier project assumptions or
+> a dated audit. See the [current documentation](../README.md) for supported behavior.
+
 Status: daftar pekerjaan, **belum diterapkan pada repo software oleh batch AI
 ini**. Temuan berasal dari pembacaan snapshot berikut, bukan inspeksi database
 atau server produksi:
@@ -18,7 +21,7 @@ penyimpanan melalui `src/ai/ai.service.ts`. Namun jalur sensor dalam
 belum memanggil model AI. Menambahkan field/komponen layar saja tidak menjalankan
 model. Paket AI baru menyediakan model dan endpoint yang dapat dipanggil.
 
-Panduan utama: [menjalankan layanan AI](ai-service-integration-v0.1.md).
+Panduan utama: [menjalankan layanan AI](../ai-service-integration-v0.1.md).
 
 ## MUST FIX: Backend
 

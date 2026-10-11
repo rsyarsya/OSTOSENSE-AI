@@ -55,7 +55,7 @@ def main():
                 result = json.load(response)
             if result["ai"] != case["expected"]:
                 raise ValueError("Model response differs from the bundled reference")
-            print(f"Simulasi AI: {result['ai']['risk_class']} - sesuai model bawaan")
+            print(f"Synthetic example: {result['ai']['risk_class']} - matches bundled model")
     except (URLError, ValueError, KeyError) as error:
         if isinstance(error, HTTPError):
             error.close()

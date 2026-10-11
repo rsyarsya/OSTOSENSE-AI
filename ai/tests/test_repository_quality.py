@@ -38,14 +38,8 @@ class RepositoryQualityTests(unittest.TestCase):
         )
 
     def test_local_markdown_links_resolve(self):
-        documents = [
-            REPO_ROOT / "README.md",
-            REPO_ROOT / "CONTRIBUTING.md",
-            REPO_ROOT / "SECURITY.md",
-            AI_ROOT / "README.md",
-            AI_ROOT / "contracts" / "README.md",
-            *sorted((REPO_ROOT / "docs").glob("*.md")),
-        ]
+        documents = [path for path in self._repository_files()
+                     if path.suffix == ".md" and path.is_file()]
         broken = []
         for document in documents:
             text = document.read_text(encoding="utf-8")
@@ -77,17 +71,20 @@ class RepositoryQualityTests(unittest.TestCase):
         self.assertTrue(all(path.is_file() for path in required))
 
     def test_only_shell_scripts_are_executable(self):
-        unexpected = []
-        for path in self._repository_files():
-            if path.is_file() and path.suffix != ".sh" and path.stat().st_mode & 0o111:
-                unexpected.append(str(path.relative_to(REPO_ROOT)))
-        self.assertEqual(unexpected, [])
-
-        required_scripts = (
-            REPO_ROOT / "scripts" / "verify.sh",
-            REPO_ROOT / "scripts" / "build_engineering_demo.sh",
+        # Git's index carries portable executable modes; Windows st_mode does not.
+        result = subprocess.run(
+            ["git", "ls-files", "--stage", "-z"], cwd=REPO_ROOT,
+            check=True, capture_output=True, text=True,
         )
-        self.assertTrue(all(path.stat().st_mode & 0o111 for path in required_scripts))
+        executable = set()
+        for entry in result.stdout.split("\0"):
+            if not entry:
+                continue
+            metadata, name = entry.split("\t", 1)
+            if metadata.split()[0] == "100755":
+                executable.add(name)
+        self.assertEqual({name for name in executable if not name.endswith(".sh")}, set())
+        self.assertTrue({"scripts/verify.sh", "scripts/build_engineering_demo.sh"} <= executable)
 
 
 if __name__ == "__main__":

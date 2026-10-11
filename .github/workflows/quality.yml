@@ -7,65 +7,70 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  python:
-    name: Python ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
+  verify:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12"]
-    defaults:
-      run:
-        working-directory: ai
+        include:
+          - os: ubuntu-latest
+            python: "3.11"
+          - os: ubuntu-latest
+            python: "3.12"
+          - os: windows-latest
+            python: "3.12"
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ matrix.python }}
           cache: pip
-          cache-dependency-path: ai/pyproject.toml
-      - name: Install pipeline, service, and quality tools
-        run: python -m pip install -c requirements-serve.lock -e ".[pipeline,quality,serve,serve-test]"
-      - name: Unit and integration tests
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
-          PYTHONPATH: src
-        run: python -W error -m unittest discover -s tests
-      - name: Ruff correctness gate
-        run: python -m ruff check src tests
-      - name: Pyright
-        run: python -m pyright --pythonpath "$(command -v python)"
-      - name: Build package
-        run: python -m build --outdir "${{ runner.temp }}/dist"
-      - name: Clean-wheel import smoke test
-        if: matrix.python-version == '3.12'
-        working-directory: ${{ runner.temp }}
-        run: |
-          python -m venv smoke-venv
-          smoke-venv/bin/python -I -m pip install --no-deps dist/*.whl
-          smoke-venv/bin/python -I -c "import ostosense_ai, ostosense_contract; from importlib.metadata import version; assert ostosense_ai.__version__ == version('ostosense-contract')"
-          smoke-venv/bin/python -I -m ostosense_ai.bundled_model
+          cache-dependency-path: |
+            ai/pyproject.toml
+            ai/requirements-serve.lock
+      - name: Install development dependencies
+        run: python -m pip install -c ai/requirements-serve.lock -e "./ai[pipeline,quality,serve,serve-test]"
+      - name: Verify tests, package, C++ kernels, and repository
+        run: python scripts/verify.py
 
-  cpp:
-    name: Portable C++17
+  research:
+    name: Public experiment reproduction
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6
-      - name: Compile and run host tests
-        run: |
-          set -euo pipefail
-          for name in data_contract ordinal_inference capacitive_features; do
-            g++ -std=c++17 -Wall -Wextra -Werror -pedantic \
-              -I firmware/include \
-              "firmware/tests/${name}_test.cpp" \
-              -o "${RUNNER_TEMP}/${name}_test"
-            "${RUNNER_TEMP}/${name}_test"
-          done
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: ai/pyproject.toml
+      - run: python -m pip install -e "./ai[pipeline]"
+      - name: Reproduce OLR and compare published predictions
+        run: python scripts/reproduce.py --output "${{ runner.temp }}/synthetic-run"
+      - name: Recompute all published comparison metrics
+        run: python scripts/check_published_metrics.py
+
+  cpp:
+    name: CMake / CTest
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - run: cmake -S firmware -B build/firmware -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build build/firmware
+      - run: ctest --test-dir build/firmware --output-on-failure
 
   container:
     name: Packaged AI service
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6
       - name: Build isolated model service
@@ -83,30 +88,3 @@ jobs:
             sleep 1
           done
           python3 scripts/probe_ai_service.py
-
-  hygiene:
-    name: Repository hygiene
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Check whitespace and prohibited tracked files
-        run: |
-          set -euo pipefail
-          if git grep -nI -E '[[:blank:]]+$' -- .; then
-            echo "Trailing whitespace ditemukan pada berkas terlacak" >&2
-            exit 1
-          fi
-          git diff --check
-          git show --check --format= --no-renames HEAD
-          if git ls-files | grep -Eq '(^|/)(\.env($|\.)|.*\.(pem|key|p12|pfx)$)'; then
-            echo "Tracked secret-like filename ditemukan" >&2
-            exit 1
-          fi
-          if git ls-files | grep -Eq '(^|/)P00[1-7](_[0-9]+)?\.csv$'; then
-            echo "Raw P001-P007 CSV tidak boleh berada di repository publik" >&2
-            exit 1
-          fi
-          if git ls-files | grep -Eq '(^|/)(ordinal_model_params|golden_vectors|reconstructed_windows)\.hpp$'; then
-            echo "Generated model/golden header tidak boleh berada di repository" >&2
-            exit 1
-          fi

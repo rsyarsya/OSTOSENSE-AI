@@ -19,6 +19,7 @@ validation, or OSTOSENSE performance.
 
 import csv
 import importlib.util
+import os
 import shutil
 import subprocess
 import tempfile
@@ -39,7 +40,7 @@ FEATURE_COLUMNS = matrix.FEATURE_COLUMNS
 PIPELINE_AVAILABLE = all(
     importlib.util.find_spec(m) is not None for m in ("numpy", "sklearn", "mord", "scipy")
 )
-GPP = shutil.which("g++")
+GPP = shutil.which(os.environ.get("CXX", "g++"))
 
 # Python data-contract cap_quality strings -> C++ ostosense::CapQuality members.
 CAP_QUALITY_CPP = {
@@ -297,7 +298,7 @@ class CapacitiveFeatureCrossLanguageParityTests(unittest.TestCase):
             main = root / "capacitive_parity_main.cpp"
             main.write_text(_HARNESS_MAIN, encoding="utf-8")
 
-            binary = root / "capacitive_parity"
+            binary = root / ("capacitive_parity.exe" if os.name == "nt" else "capacitive_parity")
             compile_cmd = [
                 GPP, "-std=c++17", "-Wall", "-Wextra", "-pedantic",
                 "-I", str(FIRMWARE_INCLUDE), "-I", str(edge), str(main), "-o", str(binary),

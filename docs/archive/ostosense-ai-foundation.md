@@ -1,5 +1,8 @@
 # Fondasi Arsitektur AI OSTOSENSE
 
+> Historical record. This document preserves earlier project assumptions or
+> a dated audit. See the [current documentation](../README.md) for supported behavior.
+
 **Status:** Panduan konseptual prototipe PKM-KC
 
 **Acuan data:** OSTOSENSE AI Data Contract v1.1
@@ -315,7 +318,7 @@ flowchart LR
 ```
 
 Referensi field, enum, timestamp, dan event metadata tersedia pada
-[AI Data Contract v1.1](./ai-data-contract-v1.1.md).
+[AI Data Contract v1.1](../ai-data-contract-v1.1.md).
 
 Tiga timestamp leakage wajib dipisahkan:
 

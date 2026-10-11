@@ -82,7 +82,7 @@ class ServiceProcessTests(unittest.TestCase):
                 timeout=20,
             )
             self.assertEqual(checked.returncode, 0, checked.stderr)
-            self.assertEqual(checked.stdout.count("sesuai model bawaan"), 4)
+            self.assertEqual(checked.stdout.count("matches bundled model"), 4)
             result = request("/v1/evaluate-window", raw_request())
             self.assertEqual(result["ai"]["model_status"], "UNVALIDATED")
             self.assertEqual(result["diagnostics"]["quality_verification"], "OPERATOR_ONLY")

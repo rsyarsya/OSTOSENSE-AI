@@ -1,5 +1,8 @@
 # Runbook Shakedown Intake OSTOSENSE v0.1
 
+> Historical record. This document preserves earlier project assumptions or
+> a dated audit. See the [current documentation](../README.md) for supported behavior.
+
 **Status: DRAFT, belum dikunci. Untuk 3–5 sesi shakedown rekayasa dua-kanal
 pertama.** Runbook ini menjelaskan cara menyiapkan, merekam, dan memeriksa
 kualitas (QC) sesi integrasi logger kapasitif + LIG pertama sebelum ada model,

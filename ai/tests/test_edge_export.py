@@ -2,6 +2,7 @@ import csv
 import hashlib
 import importlib.util
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -26,7 +27,7 @@ MODEL_MATRIX_COLUMNS = matrix.MODEL_MATRIX_COLUMNS
 PIPELINE_AVAILABLE = all(
     importlib.util.find_spec(m) is not None for m in ("numpy", "sklearn", "mord", "scipy")
 )
-GPP = shutil.which("g++")
+GPP = shutil.which(os.environ.get("CXX", "g++"))
 BANNED_KEYS = {
     "macro_f1", "kappa", "confusion_matrix", "accuracy", "meets_target", "pass", "fail",
     "passed", "failed", "target_met", "notification", "notification_accuracy", "lead_time",
@@ -416,7 +417,7 @@ class EdgeExportCrossLanguageParityTests(unittest.TestCase):
             self.assertEqual(manifest["vector_count"], 38)
             main = root / "parity_main.cpp"
             main.write_text(_PARITY_MAIN, encoding="utf-8")
-            binary = root / "parity"
+            binary = root / ("parity.exe" if os.name == "nt" else "parity")
             compile_cmd = [
                 GPP, "-std=c++17", "-Wall", "-Wextra", "-pedantic",
                 "-I", str(FIRMWARE_INCLUDE), "-I", str(edge), str(main), "-o", str(binary),

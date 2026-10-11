@@ -3,7 +3,7 @@
 This module joins the canonical feature artifacts (`features.csv` +
 `feature_manifest.json`) with the canonical label artifacts (`labels.csv` +
 `label_manifest.json`) into a single `model_matrix.csv` plus a deterministic
-`matrix_manifest.json`, ready to hand to a trainer in a later batch. It performs
+`matrix_manifest.json` for the training stage. It performs
 **no training, no metrics, no splitting** — it only stitches validated rows
 together and preserves the `dataset_partition` produced by labeling.
 

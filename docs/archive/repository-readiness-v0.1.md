@@ -1,8 +1,11 @@
 # Readiness OSTOSENSE-AI v0.1
 
+> Historical record. This document preserves earlier project assumptions or
+> a dated audit. See the [current documentation](../README.md) for supported behavior.
+
 Pembaruan 8 September 2026: aset model siap pakai, CLI deterministik, adapter
 raw-window, dan layanan HTTP kini ditambahkan pada working tree repo AI.
-Lihat [panduan layanan](ai-service-integration-v0.1.md) serta
+Lihat [panduan layanan](../ai-service-integration-v0.1.md) serta
 [temuan konsumen terbaru](software-must-fix-2026-09-08.md). Status tabel dan
 hasil 3 September di bawah merupakan catatan historis, bukan klaim layanan
 baru sudah di-deploy. Hasil batch baru ada pada bagian verifikasi 8 September

@@ -1,0 +1,15 @@
+name: Documentation or research question
+description: Ask about methods, reproducibility, interfaces, or documentation.
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Link the relevant document, artifact, or command.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain what you are trying to reproduce or understand. Omit private data.

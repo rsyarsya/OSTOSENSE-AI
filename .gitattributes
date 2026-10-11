@@ -1,0 +1,5 @@
+# Keep byte-hashed model assets and shell scripts identical across platforms.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
